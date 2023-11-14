@@ -1,0 +1,33 @@
+{
+  "name": "set-web-2023",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "run-p lint:*",
+    "lint:prettier": "prettier --ignore-path .gitignore --check ./src",
+    "lint:eslint": "eslint --ext .js,jsx,.ts,.tsx ./src",
+    "fix": "run-p fix:*",
+    "fix:prettier": "prettier --ignore-path .gitignore --write ./src",
+    "fix:lint": "eslint --ext .js,jsx,.ts,.tsx --fix ./src"
+  },
+  "dependencies": {
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "next": "14.0.2",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.2",
+    "typescript": "^5"
+  }
+}
