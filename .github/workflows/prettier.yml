@@ -16,6 +16,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: Install dependencies
+        run: yarn install
       - name: Run Prettier
         if: env.GIT_DIFF
         run: yarn fix:prettier
