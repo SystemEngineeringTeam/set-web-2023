@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# シス研 webサイト
+リンク: https://www.sysken.net/
 
-## Getting Started
+## 環境構築
+1. リポジトリをクローン
+2. `yarn` でパッケージをインストール
+3. `yarn dev` で開発サーバーを起動
 
-First, run the development server:
+## 開発の流れ
+1. issueを立てる
+2. "Development" から作業ブランチを紐付ける
+   - issue の右側にある "Development" をクリック
+   - 作業ブランチ名は `<issue番号>-<簡単な内容>` とする (ex: `1-add-top-page`)
+3. 作業ブランチを実際に作成する
+4. コミットする
+   - コミット前に `yarn lint` `yarn fix` でコードを整形する
+5. 作業ブランチからmainブランチにPRを送る
+   - フォーマットされていない場合は、GitHub Action がフォーマットしてくれる
+   - ESLint がエラーを検出した場合は、PRをマージできないため修正を行う
+6. mainにマージする
+7. mainをreleaseにマージする
+   - releaseにマージすると自動でデプロイされる
+   - (esaのmdは直接releaseにプッシュされる)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# LICENSE
+None
