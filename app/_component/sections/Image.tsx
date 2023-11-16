@@ -4,7 +4,7 @@ type Props = {
   img: string;
 };
 
-export default function Image({ img }: Props) {
+export default function ImageSection({ img }: Props) {
   return (
     <section
       className={css({

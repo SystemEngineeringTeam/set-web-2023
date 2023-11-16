@@ -1,6 +1,6 @@
 import { getPages, getTopImages } from "./_component/loadFiles";
 import AboutSection from "./_component/sections/About";
-import Image from "./_component/sections/Image";
+import ImageSection from "./_component/sections/Image";
 import TopSection from "./_component/sections/Top";
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
         return (
           <>
             <AboutSection key={index} content={content} />
-            <Image
+            <ImageSection
               key={`parallax-${index}`}
               img={imagepathes[index % imagepathes.length].path}
             />
