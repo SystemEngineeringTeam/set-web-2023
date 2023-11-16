@@ -15,6 +15,8 @@
     "fix:lint": "eslint --ext .js,jsx,.ts,.tsx --fix ./"
   },
   "dependencies": {
+    "@mantine/core": "^7.2.2",
+    "@mantine/hooks": "^7.2.2",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-prettier": "^5.0.1",
