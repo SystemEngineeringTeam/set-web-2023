@@ -22,6 +22,9 @@ export default defineConfig({
           500: { value: "#d2e8ef" },
         },
       },
+      fontSizes: {
+        sm: { value: "16px" },
+      },
     },
   },
 
