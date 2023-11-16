@@ -1,9 +1,9 @@
-import { css } from "@/styled-system/css";
+import TopSection from "./_component/sections/Top";
 
 export default function Home() {
   return (
-    <div className={css({ fontSize: "2xl", fontWeight: "bold" })}>
-      Hello 🐼!
-    </div>
+    <main>
+      <TopSection />
+    </main>
   );
 }

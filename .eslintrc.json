@@ -65,6 +65,7 @@
       "error",
       "smart"
     ],
-    "prefer-template": "error"
+    "prefer-template": "error",
+    "@next/next/no-img-element": "off"
   }
 }
