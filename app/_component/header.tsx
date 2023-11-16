@@ -1,7 +1,7 @@
 import Image from "next/image";
+import MenuButton from "./MenuButton";
 import { getPages } from "./pages";
 import { css } from "@/styled-system/css";
-import MenuButton from "./MenuButton";
 
 export default function Header() {
   const pages = getPages();
