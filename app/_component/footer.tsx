@@ -9,10 +9,7 @@ export default function Footer() {
     <footer
       className={css({
         backgroundColor: "primary.300",
-        position: "fixed",
-        bottom: 0,
-        left: 0,
-        right: 0,
+        width: "100vw",
       })}
     >
       <div
