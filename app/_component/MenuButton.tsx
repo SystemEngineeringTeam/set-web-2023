@@ -1,8 +1,7 @@
 "use client";
 
-import { cva } from "@/styled-system/css";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { cva } from "@/styled-system/css";
 
 export const btn = cva({
   base: {
