@@ -23,7 +23,7 @@ export default function Header() {
     >
       <Image src="/img/set.webp" width={40} height={40} alt="sysken logo" />
       {pages.map((page) => (
-        <span
+        <button
           key={page.id}
           className={css({
             padding: "2px 5px 0",
@@ -36,7 +36,7 @@ export default function Header() {
           })}
         >
           {page.meta.title}
-        </span>
+        </button>
       ))}
     </header>
   );
