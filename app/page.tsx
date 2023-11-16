@@ -1,9 +1,31 @@
+import { getPages, getTopImages } from "./_component/loadFiles";
+import AboutSection from "./_component/sections/About";
+import Image from "./_component/sections/Image";
 import TopSection from "./_component/sections/Top";
 
 export default function Home() {
+  const pages = getPages();
+  const topPage = pages.find((page) => page.path === "/");
+  const mdContents = topPage ? topPage.content.split("---") : [];
+  const imagepathes = getTopImages();
+  const hero =
+    imagepathes.find((image) => image.name.startsWith("hero")) ||
+    imagepathes.slice(-1)[0];
+
   return (
     <main>
-      <TopSection />
+      <TopSection message={mdContents[0]} img={hero.path} />
+      {mdContents.splice(1).map((content, index) => {
+        return (
+          <>
+            <AboutSection key={index} content={content} />
+            <Image
+              key={`parallax-${index}`}
+              img={imagepathes[index % imagepathes.length].path}
+            />
+          </>
+        );
+      })}
     </main>
   );
 }

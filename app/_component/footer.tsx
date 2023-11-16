@@ -1,5 +1,5 @@
 import MenuButton from "./MenuButton";
-import { getPages } from "./pages";
+import { getPages } from "./loadFiles";
 import { css } from "@/styled-system/css";
 
 export default function Footer() {

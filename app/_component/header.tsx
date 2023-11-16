@@ -1,6 +1,6 @@
 import Image from "next/image";
 import MenuButton from "./MenuButton";
-import { getPages } from "./pages";
+import { getPages } from "./loadFiles";
 import { css } from "@/styled-system/css";
 
 export default function Header() {
@@ -22,7 +22,7 @@ export default function Header() {
         gap: "10px",
       })}
     >
-      <Image src="/img/set.webp" width={40} height={40} alt="sysken logo" />
+      <Image src="/logo/set.webp" width={40} height={40} alt="sysken logo" />
       {pages.map((page) => (
         <MenuButton
           place="header"

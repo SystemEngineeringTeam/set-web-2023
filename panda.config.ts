@@ -1,4 +1,5 @@
 import { defineConfig } from "@pandacss/dev";
+import { mdStyle } from "./components/mdstyle";
 
 export default defineConfig({
   // Whether to use css reset
@@ -27,6 +28,8 @@ export default defineConfig({
       },
     },
   },
+
+  patterns: { mdStyle },
 
   // The output directory for your css system
   outdir: "styled-system",

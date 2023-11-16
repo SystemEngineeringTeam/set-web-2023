@@ -1,7 +1,12 @@
 import { css } from "@/styled-system/css";
 import { center } from "@/styled-system/patterns";
 
-export default function TopSection() {
+type Props = {
+  message: string;
+  img: string;
+};
+
+export default function TopSection({ message, img }: Props) {
   return (
     <section
       className={css({
@@ -28,15 +33,12 @@ export default function TopSection() {
             textAlign: "center",
             textShadow: "3px 3px white",
           })}
-        >
-          ようこそ
-          <br />
-          システム工学研究会へ
-        </h1>
+          dangerouslySetInnerHTML={{ __html: message }}
+        />
       </div>
 
       <img
-        src="/img/room.webp"
+        src={img}
         alt="background image"
         className={css({
           position: "absolute",
