@@ -13,13 +13,19 @@ export default function AboutSection({ content }: Props) {
         padding: "70px 20px 80px",
       })}
     >
-      <Md2Html
-        className={mdStyle({
-          style: "no-underline",
+      <div
+        className={css({
+          marginInline: "auto",
           maxWidth: "800px",
         })}
-        content={content}
-      />
+      >
+        <Md2Html
+          className={mdStyle({
+            style: "no-underline",
+          })}
+          content={content}
+        />
+      </div>
     </section>
   );
 }

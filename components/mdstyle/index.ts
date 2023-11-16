@@ -13,6 +13,7 @@ export const mdStyle: PatternConfig = {
 
     if (style === "no-underline")
       return {
+        width: "100%",
         overflowX: "hidden",
 
         "& h1": {
