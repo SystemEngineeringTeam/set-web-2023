@@ -19,10 +19,10 @@ export function getPages(): Page[] {
     const sortTag = meta.tags?.filter((tag) => tag.startsWith("sort:"))[0];
     const sort = sortTag ? sortTag.replace("sort:", "") : "last";
 
-    const pathTag = meta.tags?.filter((tag) => tag.startsWith("path:/"))[0];
+    const pathTag = meta.tags?.filter((tag) => tag.startsWith("path:"))[0];
     const filepath = pathTag
-      ? pathTag.replace("path:/", "")
-      : filename.toLowerCase();
+      ? pathTag.replace("path:", "")
+      : `/${meta.title.toLowerCase()}`;
 
     return {
       path: filepath,

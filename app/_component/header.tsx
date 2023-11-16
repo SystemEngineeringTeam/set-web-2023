@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getPages } from "./pages";
 import { css } from "@/styled-system/css";
+import MenuButton from "./MenuButton";
 
 export default function Header() {
   const pages = getPages();
@@ -23,20 +24,12 @@ export default function Header() {
     >
       <Image src="/img/set.webp" width={40} height={40} alt="sysken logo" />
       {pages.map((page) => (
-        <button
+        <MenuButton
+          place="header"
+          text={page.meta.title}
+          path={page.path}
           key={page.id}
-          className={css({
-            padding: "2px 5px 0",
-            fontSize: "sm",
-            cursor: "pointer",
-            transition: "color 0.3s",
-            _hover: {
-              color: "primary.300",
-            },
-          })}
-        >
-          {page.meta.title}
-        </button>
+        />
       ))}
     </header>
   );

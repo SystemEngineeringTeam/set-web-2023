@@ -1,3 +1,4 @@
+import MenuButton from "./MenuButton";
 import { getPages } from "./pages";
 import { css } from "@/styled-system/css";
 
@@ -20,23 +21,12 @@ export default function Footer() {
         })}
       >
         {pages.map((page) => (
-          <button
+          <MenuButton
+            place="footer"
+            text={page.meta.title}
+            path={page.path}
             key={page.id}
-            className={css({
-              width: "100%",
-              color: "white",
-              textAlign: "left",
-              display: "block",
-              cursor: "pointer",
-              transition: "color .3s",
-
-              _hover: {
-                color: "primary.400",
-              },
-            })}
-          >
-            {page.meta.title}
-          </button>
+          />
         ))}
       </div>
       <p
