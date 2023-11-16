@@ -1,12 +1,15 @@
 # シス研 webサイト
+
 リンク: https://www.sysken.net/
 
 ## 環境構築
+
 1. リポジトリをクローン
 2. `yarn` でパッケージをインストール
 3. `yarn dev` で開発サーバーを起動
 
 ## 開発の流れ
+
 1. issueを立てる
 2. "Development" から作業ブランチを紐付ける
    - issue の右側にある "Development" をクリック
@@ -23,4 +26,5 @@
    - (esaのmdは直接releaseにプッシュされる)
 
 # LICENSE
+
 None

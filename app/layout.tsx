@@ -3,7 +3,8 @@ import { Inter } from "next/font/google";
 import React from "react";
 import "./globals.css";
 import Footer from "./_component/footer";
-import Header from "./_component/header";
+import Header from "./_component/header/header";
+import { getPages } from "./_component/loadFiles";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,10 +32,12 @@ type Props = {
 };
 
 export default function RootLayout({ children }: Props) {
+  const pages = getPages();
+
   return (
     <html lang="ja">
       <body className={inter.className}>
-        <Header />
+        <Header pages={pages} />
         {children}
         <Footer />
       </body>

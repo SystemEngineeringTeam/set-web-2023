@@ -1,11 +1,15 @@
+"use client";
+
 import Image from "next/image";
-import MenuButton from "./MenuButton";
-import { getPages } from "./loadFiles";
+import MenuButton from "../MenuButton";
 import { css } from "@/styled-system/css";
+import { Post } from "@/types";
 
-export default function Header() {
-  const pages = getPages();
+type Props = {
+  pages: Post[];
+};
 
+export default function HeaderBase({ pages }: Props) {
   return (
     <header
       className={css({
@@ -17,9 +21,13 @@ export default function Header() {
         left: 0,
         right: 0,
         zIndex: 1000,
-        display: "flex",
+        display: "none",
         alignItems: "center",
         gap: "10px",
+
+        sm: {
+          display: "flex",
+        },
       })}
     >
       <Image src="/logo/set.webp" width={40} height={40} alt="sysken logo" />
@@ -27,7 +35,7 @@ export default function Header() {
         <MenuButton
           place="header"
           text={page.meta.title}
-          path={page.path}
+          path={`/posts/${page.id}`}
           key={page.id}
         />
       ))}
