@@ -4,7 +4,7 @@ import React from "react";
 import "./globals.css";
 import Footer from "./_component/footer";
 import Header from "./_component/header/header";
-import { getPages } from "./_component/loadFiles";
+import { getPages } from "@/components/loadFiles";
 
 const inter = Inter({ subsets: ["latin"] });
 
