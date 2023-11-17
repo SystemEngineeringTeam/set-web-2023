@@ -20,7 +20,7 @@ export function getTopImages(): Image[] {
 function parseMetaTag(
   tags: null | string[],
   key: string,
-  defaultValue: string
+  defaultValue: string,
 ) {
   const tag = tags?.filter((tag) => tag.startsWith(`${key}:`))[0];
   return tag ? tag.replace(`${key}:`, "") : defaultValue;
@@ -43,7 +43,7 @@ export function getPages(): Page[] {
     const filepath = parseMetaTag(
       meta.tags,
       "path",
-      `/${meta.title.toLowerCase()}`
+      `/${meta.title.toLowerCase()}`,
     );
 
     return {
