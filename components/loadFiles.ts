@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { Page, PageMeta, Image, Post } from "@/types";
+import { Page, Image, Post } from "@/types";
 
 export function getTopImages(): Image[] {
   const imagesDir = path.join(process.cwd(), "public/img/top");
@@ -34,8 +34,10 @@ export function getPages(): Page[] {
     const filePath = path.join(contentsDir, filename);
     const fileContents = fs.readFileSync(filePath, "utf8");
     const md = matter(fileContents);
-    const meta = md.data as PageMeta;
+    const meta = md.data;
     meta.created_at = new Date(meta.created_at);
+
+    if (typeof meta.tags === "string") meta.tags = meta.tags.split(", ");
 
     const style = parseMetaTag(meta.tags, "style", "default");
     const sort = parseMetaTag(meta.tags, "sort", "last");
@@ -76,6 +78,8 @@ export function getPosts(): Post[] {
     const fileContents = fs.readFileSync(filePath, "utf8");
     const md = matter(fileContents);
     const meta = md.data;
+
+    if (typeof meta.tags === "string") meta.tags = meta.tags.split(", ");
 
     const createdAt = parseMetaTag(meta.tags, "at", meta.created_at);
     meta.created_at = new Date(createdAt);
