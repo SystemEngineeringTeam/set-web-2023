@@ -40,14 +40,14 @@ export function getPages(): Page[] {
     const style = parseMetaTag(meta.tags, "style", "default");
     const sort = parseMetaTag(meta.tags, "sort", "last");
     const widthNarrow = parseMetaTag(meta.tags, "widthNarrow", "false");
-    const filepath = parseMetaTag(
+    const path_ = parseMetaTag(
       meta.tags,
       "path",
       `/${meta.title.toLowerCase()}`,
     );
 
     return {
-      path: filepath,
+      path: path_.replace("¥", "/"),
       style,
       widthNarrow: widthNarrow === "true",
       sort,
