@@ -14,7 +14,6 @@
 
 - [開発において](./docs/development.md)
 
-
 # LICENSE
 
 None

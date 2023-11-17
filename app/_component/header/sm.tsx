@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import MenuButton from "../MenuButton";
+import Logo from "./logo";
 import { css } from "@/styled-system/css";
 
 type HambergerIconProps = {
@@ -58,7 +58,7 @@ export default function HeaderSm({ open }: Props) {
         },
       })}
     >
-      <Image src="/logo/set.webp" width={40} height={40} alt="sysken logo" />
+      <Logo />
       <MenuButton place="header" text="シス研" path="/" />
       <span
         className={css({
