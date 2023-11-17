@@ -1,6 +1,6 @@
 import { mdStyles } from "@/const/index";
 
-export type PageStyle = typeof mdStyles;
+export type PageStyle = (typeof mdStyles)[number];
 
 export type PageMeta = {
   title: string;
@@ -14,7 +14,8 @@ export type PageMeta = {
 
 export type Page = {
   path: string;
-  style: string;
+  style: PageStyle;
+  widthNarrow: boolean;
   sort: string;
   filename: string;
   id: number;

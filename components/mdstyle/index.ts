@@ -5,6 +5,7 @@ export const mdStyle: PatternConfig = {
   description: "Markdown style",
   properties: {
     style: { type: "enum", value: [...mdStyles] },
+    maxWidth: { type: "string" },
   },
   transform(props) {
     const { style } = props;
@@ -116,6 +117,7 @@ export const mdStyle: PatternConfig = {
       };
 
     return {
+      width: "100%",
       overflowX: "hidden",
 
       "& h1": {

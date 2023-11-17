@@ -1,8 +1,8 @@
-import { getPages, getPosts, getTopImages } from "./_component/loadFiles";
 import AboutSection from "./_component/sections/About";
 import ImageSection from "./_component/sections/Image";
 import RecentPosts from "./_component/sections/RecentPosts";
 import TopSection from "./_component/sections/Top";
+import { getPages, getPosts, getTopImages } from "@/components/loadFiles";
 
 export default function Home() {
   const pages = getPages();
