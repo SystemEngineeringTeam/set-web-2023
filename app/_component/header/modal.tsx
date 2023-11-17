@@ -3,12 +3,12 @@
 import { useRouter } from "next/navigation";
 import { CloseIcon } from "@/components/icons";
 import { css } from "@/styled-system/css";
-import { Post } from "@/types";
+import { Page } from "@/types";
 
 type Props = {
   opened: boolean;
   close: () => void;
-  pages: Post[];
+  pages: Page[];
 };
 
 export default function Modal({ opened, close, pages }: Props) {
@@ -71,7 +71,7 @@ export default function Modal({ opened, close, pages }: Props) {
                 position: "relative",
                 cursor: "pointer",
               })}
-              onClick={() => router.push(`/posts/${page.id}`)}
+              onClick={() => router.push(page.path)}
               key={page.id}
             >
               {"- "}
