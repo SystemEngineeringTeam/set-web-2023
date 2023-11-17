@@ -4,10 +4,10 @@ import { useDisclosure } from "@mantine/hooks";
 import Modal from "../header/modal";
 import HeaderBase from "./base";
 import HeaderSm from "./sm";
-import { Post } from "@/types";
+import { Page } from "@/types";
 
 type Props = {
-  pages: Post[];
+  pages: Page[];
 };
 
 export default function Header({ pages }: Props) {

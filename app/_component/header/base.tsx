@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import MenuButton from "../MenuButton";
+import Logo from "./logo";
 import { css } from "@/styled-system/css";
-import { Post } from "@/types";
+import { Page } from "@/types";
 
 type Props = {
-  pages: Post[];
+  pages: Page[];
 };
 
 export default function HeaderBase({ pages }: Props) {
@@ -30,12 +30,12 @@ export default function HeaderBase({ pages }: Props) {
         },
       })}
     >
-      <Image src="/logo/set.webp" width={40} height={40} alt="sysken logo" />
+      <Logo />
       {pages.map((page) => (
         <MenuButton
           place="header"
           text={page.meta.title}
-          path={`/posts/${page.id}`}
+          path={page.path}
           key={page.id}
         />
       ))}
