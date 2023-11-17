@@ -1,5 +1,6 @@
 import { getPosts } from "@/components/loadFiles";
 import Md2Html from "@/components/md2html";
+import { formatdate } from "@/components/util";
 import { css } from "@/styled-system/css";
 import { mdStyle } from "@/styled-system/patterns";
 import { Post } from "@/types";
@@ -36,16 +37,28 @@ export default function PostPage({ params }: Props) {
           margin: "0 auto",
         })}
       >
-        <h1
+        <div
           className={css({
-            fontSize: "2rem",
-            fontWeight: 700,
-            marginBottom: "1rem",
-            borderBottom: "1px solid black",
+            marginBottom: "50px",
           })}
         >
-          {post.meta.title}
-        </h1>
+          <h1
+            className={css({
+              fontSize: "2rem",
+              fontWeight: 700,
+              borderBottom: "1px solid black",
+            })}
+          >
+            {post.meta.title}
+          </h1>
+          <p
+            className={css({
+              textAlign: "end",
+            })}
+          >
+            {formatdate(post.meta.created_at)}
+          </p>
+        </div>
 
         <div
           className={css({
