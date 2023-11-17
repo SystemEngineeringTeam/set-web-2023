@@ -1,7 +1,7 @@
 import AboutSection from "./_component/sections/About";
 import ImageSection from "./_component/sections/Image";
-import RecentPosts from "./_component/sections/RecentPosts";
 import TopSection from "./_component/sections/Top";
+import RecentPosts from "./_component/sections/recentpost/RecentPosts";
 import { getPages, getPosts, getTopImages } from "@/components/loadFiles";
 
 export default function Home() {

@@ -58,13 +58,13 @@ export function getPages(): Page[] {
     } as Page;
   });
 
-  pages.filter((page) => page.meta.title !== "README");
-  pages.sort((a, b) => {
+  const filteredPages = pages.filter((page) => page.meta.title !== "README");
+  filteredPages.sort((a, b) => {
     if (a.sort === "last") return 1;
     return a.sort > b.sort ? 1 : -1;
   });
 
-  return pages;
+  return filteredPages;
 }
 
 export function getPosts(): Post[] {
@@ -88,8 +88,10 @@ export function getPosts(): Post[] {
     } as Post;
   });
 
-  pages.filter((page) => page.meta.title !== "README");
-  pages.sort((a, b) => (a.meta.created_at > b.meta.created_at ? -1 : 1));
+  const filteredPosts = pages.filter((page) => page.meta.title !== "README");
+  filteredPosts.sort((a, b) =>
+    a.meta.created_at > b.meta.created_at ? -1 : 1,
+  );
 
-  return pages;
+  return filteredPosts;
 }
