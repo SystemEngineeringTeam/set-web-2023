@@ -71,7 +71,7 @@ export default function Modal({ opened, close, pages }: Props) {
                 position: "relative",
                 cursor: "pointer",
               })}
-              onClick={() => router.push(`/posts/${page.id}`)}
+              onClick={() => router.push(`/posts`)}
               key={page.id}
             >
               {"- "}
