@@ -17,3 +17,7 @@ export function formatdate(date: Date) {
 
   return `${year}年${month}月${day}日`;
 }
+
+export function toDigits(num: number, n: number): string {
+  return `${num}`.padStart(n, "0");
+}
