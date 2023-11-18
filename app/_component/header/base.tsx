@@ -1,6 +1,7 @@
 "use client";
 
 import MenuButton from "../MenuButton";
+import Battery from "./battery";
 import Clock from "./clock";
 import Logo from "./logo";
 import { css } from "@/styled-system/css";
@@ -47,6 +48,7 @@ export default function HeaderBase({ pages }: Props) {
         })}
       />
 
+      <Battery />
       <Clock />
     </header>
   );
