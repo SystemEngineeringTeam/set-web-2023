@@ -33,11 +33,12 @@ type Props = {
 
 export default function RootLayout({ children }: Props) {
   const pages = getPages();
+  const publishedPages = pages.filter((page) => page.meta.published);
 
   return (
     <html lang="ja">
       <body className={inter.className}>
-        <Header pages={pages} />
+        <Header pages={publishedPages} />
         {children}
         <Footer />
       </body>
