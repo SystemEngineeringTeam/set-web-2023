@@ -4,6 +4,7 @@ import { css } from "@/styled-system/css";
 
 export default function Posts() {
   const posts = getPosts();
+  const publishedPosts = posts.filter((post) => post.meta.published);
   const pages = getPages();
 
   const postsPage = pages.find((page) => page.path === "/posts");
@@ -34,7 +35,7 @@ export default function Posts() {
           {postsPage ? postsPage.meta.title : "Posts"}
         </h1>
 
-        {posts.map((post) => (
+        {publishedPosts.map((post) => (
           <Item key={post.id} post={post} />
         ))}
       </div>
