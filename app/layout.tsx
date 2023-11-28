@@ -8,6 +8,8 @@ import { getPages } from "@/components/loadFiles";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const url = "https://sysken.net/";
+const siteName = "システム工学研究会";
 const description =
   "システム工学研究会ってどういうサークル？" +
   "システム工学研究会(通称シス研)は愛知工業大学公認の情報系サークルです。" +
@@ -17,14 +19,28 @@ const description =
   "またサークルのWebページやサーバーの管理も行っています。";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(url),
   title: {
     template: "%s | シス研",
-    default: "システム工学研究会",
+    default: siteName,
   },
   description,
-  applicationName: "シス研",
+  applicationName: siteName,
   category: "website",
   keywords: ["システム工学研究会", "シス研", "愛知工業大学", "愛工大"],
+  openGraph: {
+    title: "システム工学研究会",
+    description,
+    url,
+    siteName,
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteName,
+    description,
+  },
 };
 
 type Props = {
