@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { getPosts } from "@/components/loadFiles";
 import Md2Html from "@/components/md2html";
 import { formatdate } from "@/components/util";
@@ -76,4 +77,14 @@ export default function PostPage({ params }: Props) {
       </div>
     </main>
   );
+}
+
+export function generateMetadata({ params }: Props): Metadata {
+  const { id } = params;
+  const posts = getPosts();
+  const post = posts.find((post) => post.id.toString() === id);
+
+  return {
+    title: post ? post.meta.title : "Posts",
+  };
 }

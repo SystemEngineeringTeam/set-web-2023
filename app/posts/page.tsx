@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Item from "./_components/item";
 import { getPages, getPosts } from "@/components/loadFiles";
 import { css } from "@/styled-system/css";
@@ -41,4 +42,13 @@ export default function Posts() {
       </div>
     </main>
   );
+}
+
+export function generateMetadata(): Metadata {
+  const pages = getPages();
+  const postsPage = pages.find((page) => page.path === "/posts");
+
+  return {
+    title: postsPage ? postsPage.meta.title : "Posts",
+  };
 }

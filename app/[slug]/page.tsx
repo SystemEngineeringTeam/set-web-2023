@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { getPages } from "@/components/loadFiles";
 import Md2Html from "@/components/md2html";
 import { specialPath } from "@/const";
@@ -7,7 +8,6 @@ import { Page } from "@/types";
 
 export const generateStaticParams = () => {
   const pages = getPages();
-
   const filteredPages = pages.filter(
     (page) => !specialPath.includes(page.path),
   );
@@ -67,4 +67,13 @@ export default function Pages({ params }: Props) {
       </div>
     </main>
   );
+}
+
+export function generateMetadata({ params }: Props): Metadata {
+  const pages = getPages();
+  const page = pages.find((page) => page.path === `/${params.slug}`) as Page;
+
+  return {
+    title: page.meta.title,
+  };
 }
