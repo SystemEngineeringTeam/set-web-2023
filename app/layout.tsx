@@ -5,41 +5,32 @@ import "./globals.css";
 import Footer from "./_component/footer";
 import Header from "./_component/header/header";
 import { getPages } from "@/components/loadFiles";
+import { DESCRIPTION, HOST_NAME, KEY_WORDS, SITE_NAME } from "@/const";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const url = "https://sysken.net/";
-const siteName = "システム工学研究会";
-const description =
-  "システム工学研究会ってどういうサークル？" +
-  "システム工学研究会(通称シス研)は愛知工業大学公認の情報系サークルです。" +
-  "このサークルの部室にはプログラミングや電子工作、インフラなどといった様々な情報の分野についての勉強ができる環境が整っています。" +
-  "シス研では勉強会やサークル内ハッカソンを開催したり、大学祭では工科展に出展したりしています。" +
-  "最近では外部のハッカソンに参加する人もいたり、自分の作りたいものを制作するなどして自由に活動しています。" +
-  "またサークルのWebページやサーバーの管理も行っています。";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(url),
+  metadataBase: new URL(HOST_NAME),
   title: {
     template: "%s | シス研",
-    default: siteName,
+    default: SITE_NAME,
   },
-  description,
-  applicationName: siteName,
+  description: DESCRIPTION,
+  applicationName: SITE_NAME,
   category: "website",
-  keywords: ["システム工学研究会", "シス研", "愛知工業大学", "愛工大"],
+  keywords: KEY_WORDS,
   openGraph: {
     title: "システム工学研究会",
-    description,
-    url,
-    siteName,
+    description: DESCRIPTION,
+    url: HOST_NAME,
+    siteName: SITE_NAME,
     locale: "ja_JP",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: siteName,
-    description,
+    title: SITE_NAME,
+    description: DESCRIPTION,
   },
 };
 
