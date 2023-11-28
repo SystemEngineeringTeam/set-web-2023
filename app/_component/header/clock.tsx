@@ -29,7 +29,7 @@ export default function Clock() {
           <span>月</span>
           <span
             className={css({
-              width: "17px",
+              width: "20px",
               display: "inline-block",
             })}
           >
@@ -44,7 +44,7 @@ export default function Clock() {
           />
           <span
             className={css({
-              width: "17px",
+              width: "20px",
               display: "inline-block",
             })}
           >
@@ -53,7 +53,7 @@ export default function Clock() {
           <span>:</span>
           <span
             className={css({
-              width: "17px",
+              width: "20px",
               display: "inline-block",
             })}
           >
