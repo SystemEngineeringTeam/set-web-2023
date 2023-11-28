@@ -9,7 +9,7 @@ import { Page } from "@/types";
 export const generateStaticParams = () => {
   const pages = getPages();
   const filteredPages = pages.filter(
-    (page) => !specialPath.includes(page.path)
+    (page) => !specialPath.includes(page.path),
   );
 
   return filteredPages.map((page) => ({
