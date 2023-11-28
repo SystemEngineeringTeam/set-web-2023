@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import React from "react";
 import "./globals.css";
+import "swiper/css/bundle";
 import Footer from "./_component/footer";
 import Header from "./_component/header/header";
 import { getPages } from "@/components/loadFiles";

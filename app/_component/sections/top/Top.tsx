@@ -1,12 +1,14 @@
+import { Carousel } from "./Swiper";
 import { css } from "@/styled-system/css";
 import { center } from "@/styled-system/patterns";
+import { Image } from "@/types";
 
 type Props = {
   message: string;
-  img: string;
+  images: Image[];
 };
 
-export default function TopSection({ message, img }: Props) {
+export default function TopSection({ message, images }: Props) {
   return (
     <section
       className={css({
@@ -37,19 +39,7 @@ export default function TopSection({ message, img }: Props) {
         />
       </div>
 
-      <img
-        src={img}
-        alt="background image"
-        className={css({
-          position: "absolute",
-          height: "100%",
-          width: "100%",
-          inset: 0,
-          objectFit: "cover",
-          color: "transparent",
-          filter: "opacity(0.7) blur(1px)",
-        })}
-      />
+      <Carousel images={images} />
     </section>
   );
 }
