@@ -45,7 +45,7 @@ export const mdStyle: PatternConfig = {
         },
 
         "& a": {
-          color: "#0a9b94",
+          color: "primary.300",
           textDecoration: "none",
           transitionDuration: "0.3s",
         },
@@ -150,7 +150,7 @@ export const mdStyle: PatternConfig = {
       },
 
       "& a": {
-        color: "#0a9b94",
+        color: "primary.300",
         textDecoration: "none",
         transitionDuration: "0.3s",
       },
