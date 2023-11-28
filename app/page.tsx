@@ -1,7 +1,7 @@
 import AboutSection from "./_component/sections/About";
 import ImageSection from "./_component/sections/Image";
-import TopSection from "./_component/sections/Top";
 import RecentPosts from "./_component/sections/recentpost/RecentPosts";
+import TopSection from "./_component/sections/top/Top";
 import { getPages, getPosts, getTopImages } from "@/components/loadFiles";
 
 export default function Home() {
@@ -14,10 +14,11 @@ export default function Home() {
   const hero =
     imagepathes.find((image) => image.name.startsWith("hero")) ||
     imagepathes.slice(-1)[0];
+  const others = imagepathes.filter((image) => image.name !== hero.name);
 
   return (
     <main>
-      <TopSection message={mdContents[0]} img={hero.path} />
+      <TopSection message={mdContents[0]} images={[hero, ...others]} />
       {mdContents.splice(1).map((content, index) => {
         return (
           <>
