@@ -1,7 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import Thumbnail from "@/components/thumbnail";
 import { formatdate } from "@/components/util";
+import { DEFAULT_THUMBNAIL } from "@/const";
 import { css } from "@/styled-system/css";
 import { Post } from "@/types";
 
@@ -10,6 +13,7 @@ type Props = {
 };
 
 export default function Item({ post }: Props) {
+  const [hovered, setHovered] = useState(false);
   const router = useRouter();
 
   return (
@@ -19,16 +23,30 @@ export default function Item({ post }: Props) {
         padding: "10px",
         cursor: "pointer",
         transition: "background-color 0.3s",
+        gridRow: "span 3",
+        display: "grid",
+        gridTemplateRows: "subgrid",
+        gap: "10px",
 
         _hover: {
           backgroundColor: "#f5f5f5",
         },
       })}
       onClick={() => router.push(`/posts/${post.id}`)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
+      <Thumbnail
+        height="200px"
+        hovered={hovered}
+        src={post.meta.thumbnail || DEFAULT_THUMBNAIL}
+        alt={post.meta.title}
+      />
       <span>{formatdate(post.meta.created_at)}</span>
       <h2
         className={css({
+          height: "4.5rem",
+          overflow: "hidden",
           fontSize: "1.5rem",
           fontWeight: 700,
         })}

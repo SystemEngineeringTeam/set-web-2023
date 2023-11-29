@@ -1,8 +1,13 @@
 import { css } from "@/styled-system/css";
 
-type Props = { src: string; alt: string };
+type Props = {
+  src: string;
+  alt: string;
+  height: string;
+  hovered?: boolean;
+};
 
-export default function Thumbnail({ src, alt }: Props) {
+export default function Thumbnail({ src, alt, height, hovered }: Props) {
   return (
     <div
       className={css({
@@ -11,6 +16,7 @@ export default function Thumbnail({ src, alt }: Props) {
         overflow: "hidden",
         position: "relative",
       })}
+      style={{ height }}
     >
       <img
         src={src}
@@ -26,6 +32,7 @@ export default function Thumbnail({ src, alt }: Props) {
             transform: "scale(1.05)",
           },
         })}
+        style={hovered ? { transform: "scale(1.05)" } : {}}
       />
     </div>
   );
