@@ -1,8 +1,12 @@
 import Item from "./item";
 import { css } from "@/styled-system/css";
-import { Post } from "@/types";
+import { PostPage } from "@/types";
 
-export default function List({ publishedPosts }: { publishedPosts: Post[] }) {
+export default function List({
+  publishedPosts,
+}: {
+  publishedPosts: PostPage[];
+}) {
   return (
     <div
       className={css({

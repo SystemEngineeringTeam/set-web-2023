@@ -5,7 +5,7 @@ import Thumbnail from "@/components/thumbnail";
 import { formatdate } from "@/components/util";
 import { css } from "@/styled-system/css";
 import { mdStyle } from "@/styled-system/patterns";
-import { Post } from "@/types";
+import { PostPage } from "@/types";
 
 export const generateStaticParams = () => {
   const posts = getPosts();
@@ -21,10 +21,10 @@ type Props = {
   };
 };
 
-export default function PostPage({ params }: Props) {
+export default function Post({ params }: Props) {
   const { id } = params;
   const posts = getPosts();
-  const post = posts.find((post) => post.id.toString() === id) as Post;
+  const post = posts.find((post) => post.id.toString() === id) as PostPage;
 
   return (
     <main
