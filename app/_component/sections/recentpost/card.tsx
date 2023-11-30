@@ -4,12 +4,12 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Thumbnail from "@/components/thumbnail";
 import { formatdate, getTextFromMd } from "@/components/util";
-import { DEFAULT_THUMBNAIL } from "@/const";
+import { DEFAULT_POST_THUMBNAIL } from "@/const";
 import { css } from "@/styled-system/css";
-import { Post } from "@/types";
+import { PostPage } from "@/types";
 
 type Props = {
-  post: Post;
+  post: PostPage;
 };
 
 export default function Card({ post }: Props) {
@@ -32,7 +32,7 @@ export default function Card({ post }: Props) {
       <Thumbnail
         height="200px"
         hovered={hovered}
-        src={post.meta.thumbnail || DEFAULT_THUMBNAIL}
+        src={post.meta.thumbnail || DEFAULT_POST_THUMBNAIL}
         alt={post.meta.title}
       />
       <div

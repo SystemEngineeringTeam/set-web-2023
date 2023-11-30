@@ -1,9 +1,9 @@
 import Card from "./card";
 import { css } from "@/styled-system/css";
-import { Post } from "@/types";
+import { PostPage } from "@/types";
 
 type Props = {
-  posts: Post[];
+  posts: PostPage[];
 };
 
 export default function RecentPosts({ posts }: Props) {
