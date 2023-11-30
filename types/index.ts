@@ -24,7 +24,18 @@ export type Page = {
   content: string;
 };
 
-export type Post = Omit<Page, "path" | "style" | "sort">;
+export type PostPage = Omit<Page, "path" | "style" | "sort">;
+
+export type Product = {
+  title: string;
+  created_at: Date;
+  published: boolean;
+  author: string | null;
+  thumbnail: string | null;
+  description: string | null;
+  link: string | null;
+  id: number;
+};
 
 export type Image = {
   path: string;

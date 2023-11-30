@@ -21,3 +21,7 @@ export function formatdate(date: Date) {
 export function toDigits(num: number, n: number): string {
   return `${num}`.padStart(n, "0");
 }
+
+export function toOpen(url: string) {
+  window.open(url, "_blank");
+}
