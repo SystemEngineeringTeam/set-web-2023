@@ -3,6 +3,7 @@ import { getPosts } from "@/components/loadFiles";
 import Md2Html from "@/components/md2html";
 import Thumbnail from "@/components/thumbnail";
 import { formatdate } from "@/components/util";
+import { IMAGE_REGEX } from "@/const";
 import { css } from "@/styled-system/css";
 import { mdStyle } from "@/styled-system/patterns";
 import { PostPage } from "@/types";
@@ -80,7 +81,7 @@ export default function Post({ params }: Props) {
             className={mdStyle({
               style: "default",
             })}
-            content={post.content}
+            content={post.content.replace(IMAGE_REGEX, "")}
           />
         </div>
       </div>

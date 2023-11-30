@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { IMAGE_REGEX } from "@/const";
 import { Page, Image, PostPage, Product } from "@/types";
 
 export function getTopImages(): Image[] {
@@ -105,9 +106,7 @@ export function getPosts(): PostPage[] {
     );
     meta.created_at = new Date(createdAt);
 
-    const regex = /^[\s\n]*(<img.*?src=['"](.*)['"].*>|!\[.*\]\((.*)\))/;
-    const matches = md.content.match(regex);
-    md.content = md.content.replace(regex, "");
+    const matches = md.content.match(IMAGE_REGEX);
 
     if (matches) meta.thumbnail = matches[2] || matches[3];
     else meta.thumbnail = null;
@@ -174,7 +173,7 @@ export function getProducts(): Product[] {
       else if (cnt.startsWith("# リンク")) product.link = value;
       else if (cnt.startsWith("# 制作者")) product.author = value;
       else if (cnt.startsWith("# サムネ")) {
-        const regex = /^[\s\n]*(<img.*?src=['"](.*)['"].*>|!\[.*\]\((.*)\))/;
+        const regex = IMAGE_REGEX;
         const matches = value.match(regex);
         if (matches) product.thumbnail = matches[2] || matches[3];
         else product.thumbnail = null;
