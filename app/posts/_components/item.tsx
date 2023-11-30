@@ -37,7 +37,7 @@ export default function Item({ post }: Props) {
       onMouseLeave={() => setHovered(false)}
     >
       <Thumbnail
-        height="200px"
+        height="150px"
         hovered={hovered}
         src={post.meta.thumbnail || DEFAULT_POST_THUMBNAIL}
         alt={post.meta.title}

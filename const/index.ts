@@ -2,8 +2,11 @@ export const mdStyles = ["default", "no-underline", "no-style"] as const;
 
 export const specialPath = ["/", "/posts", "/products"];
 
-export const DEFAULT_POST_THUMBNAIL = "/img/posts/default.webp";
+export const DEFAULT_POST_THUMBNAIL = "/img/posts/default.png";
 export const DEFAULT_PRODUCT_THUMBNAIL = "/img/products/default.webp";
+
+export const IMAGE_REGEX =
+  /^[\s\n]*(<img.*?src=['"](.*)['"].*>|!\[.*\]\((.*)\))/;
 
 export const HOST_NAME = "https://sysken.net/";
 export const SITE_NAME = "システム工学研究会";

@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { IMAGE_REGEX } from "@/const";
 import { Page, Image, PostPage, Product } from "@/types";
 
 export function getTopImages(): Image[] {
@@ -73,12 +74,13 @@ export function getPages(): Page[] {
   });
 
   const filteredPages = pages.filter((page) => page.meta.title !== "README");
-  filteredPages.sort((a, b) => {
+  const publishedPages = filteredPages.filter((page) => page.meta.published);
+  publishedPages.sort((a, b) => {
     if (a.sort === "last") return 1;
     return a.sort > b.sort ? 1 : -1;
   });
 
-  return filteredPages;
+  return publishedPages;
 }
 
 export function getPosts(): PostPage[] {
@@ -104,9 +106,7 @@ export function getPosts(): PostPage[] {
     );
     meta.created_at = new Date(createdAt);
 
-    const regex = /^[\s\n]*(<img.*?src=['"](.*)['"].*>|!\[.*\]\((.*)\))/;
-    const matches = md.content.match(regex);
-    md.content = md.content.replace(regex, "");
+    const matches = md.content.match(IMAGE_REGEX);
 
     if (matches) meta.thumbnail = matches[2] || matches[3];
     else meta.thumbnail = null;
@@ -120,11 +120,12 @@ export function getPosts(): PostPage[] {
   });
 
   const filteredPosts = pages.filter((page) => page.meta.title !== "README");
-  filteredPosts.sort((a, b) =>
+  const publishedPosts = filteredPosts.filter((page) => page.meta.published);
+  publishedPosts.sort((a, b) =>
     a.meta.created_at > b.meta.created_at ? -1 : 1,
   );
 
-  return filteredPosts;
+  return publishedPosts;
 }
 
 export function getProducts(): Product[] {
@@ -172,7 +173,7 @@ export function getProducts(): Product[] {
       else if (cnt.startsWith("# リンク")) product.link = value;
       else if (cnt.startsWith("# 制作者")) product.author = value;
       else if (cnt.startsWith("# サムネ")) {
-        const regex = /^[\s\n]*(<img.*?src=['"](.*)['"].*>|!\[.*\]\((.*)\))/;
+        const regex = IMAGE_REGEX;
         const matches = value.match(regex);
         if (matches) product.thumbnail = matches[2] || matches[3];
         else product.thumbnail = null;
@@ -187,7 +188,10 @@ export function getProducts(): Product[] {
   const filteredProducts = products.filter(
     (product) => product.title !== "README",
   );
-  filteredProducts.sort((a, b) => (a.created_at > b.created_at ? -1 : 1));
+  const publishedProducts = filteredProducts.filter(
+    (product) => product.published,
+  );
+  publishedProducts.sort((a, b) => (a.created_at > b.created_at ? -1 : 1));
 
-  return filteredProducts;
+  return publishedProducts;
 }
