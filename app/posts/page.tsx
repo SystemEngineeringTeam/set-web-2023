@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Item from "./_components/item";
+import List from "./_components/list";
 import { getPages, getPosts } from "@/components/loadFiles";
 import { css } from "@/styled-system/css";
 
@@ -36,9 +36,7 @@ export default function Posts() {
           {postsPage ? postsPage.meta.title : "Posts"}
         </h1>
 
-        {publishedPosts.map((post) => (
-          <Item key={post.id} post={post} />
-        ))}
+        <List publishedPosts={publishedPosts} />
       </div>
     </main>
   );

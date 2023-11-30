@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { getPosts } from "@/components/loadFiles";
 import Md2Html from "@/components/md2html";
+import Thumbnail from "@/components/thumbnail";
 import { formatdate } from "@/components/util";
 import { css } from "@/styled-system/css";
 import { mdStyle } from "@/styled-system/patterns";
@@ -67,6 +68,10 @@ export default function PostPage({ params }: Props) {
             marginInline: "auto",
           })}
         >
+          {post.meta.thumbnail && (
+            <Thumbnail src={post.meta.thumbnail} alt="thumbnail" />
+          )}
+
           <Md2Html
             className={mdStyle({
               style: "default",

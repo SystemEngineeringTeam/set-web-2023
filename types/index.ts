@@ -10,6 +10,7 @@ export type PageMeta = {
   updated_at: Date;
   published: boolean;
   number: number;
+  thumbnail: string | null;
 };
 
 export type Page = {
