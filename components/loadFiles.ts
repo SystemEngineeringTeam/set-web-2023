@@ -6,7 +6,10 @@ import { Page, Image, Post } from "@/types";
 export function getTopImages(): Image[] {
   const imagesDir = path.join(process.cwd(), "public/img/top");
   const filenames = fs.readdirSync(imagesDir);
-  const images = filenames.map((filename) => {
+  const filteredFilenames = filenames.filter(
+    (filename) => !filename.startsWith("."),
+  );
+  const images = filteredFilenames.map((filename) => {
     return {
       path: path.join("/img/top", filename),
       name: filename,
@@ -29,8 +32,11 @@ function parseMetaTag(
 export function getPages(): Page[] {
   const contentsDir = path.join(process.cwd(), "public/markdown/pages");
   const filenames = fs.readdirSync(contentsDir);
+  const filteredFilenames = filenames.filter(
+    (filename) => !filename.startsWith("."),
+  );
 
-  const pages: Page[] = filenames.map((filename) => {
+  const pages: Page[] = filteredFilenames.map((filename) => {
     const filePath = path.join(contentsDir, filename);
     const fileContents = fs.readFileSync(filePath, "utf8");
     const md = matter(fileContents);
@@ -72,8 +78,11 @@ export function getPages(): Page[] {
 export function getPosts(): Post[] {
   const contentsDir = path.join(process.cwd(), "public/markdown/posts");
   const filenames = fs.readdirSync(contentsDir);
+  const filteredFilenames = filenames.filter(
+    (filename) => !filename.startsWith("."),
+  );
 
-  const pages: Post[] = filenames.map((filename) => {
+  const pages: Post[] = filteredFilenames.map((filename) => {
     const filePath = path.join(contentsDir, filename);
     const fileContents = fs.readFileSync(filePath, "utf8");
     const md = matter(fileContents);
