@@ -73,12 +73,13 @@ export function getPages(): Page[] {
   });
 
   const filteredPages = pages.filter((page) => page.meta.title !== "README");
-  filteredPages.sort((a, b) => {
+  const publishedPages = filteredPages.filter((page) => page.meta.published);
+  publishedPages.sort((a, b) => {
     if (a.sort === "last") return 1;
     return a.sort > b.sort ? 1 : -1;
   });
 
-  return filteredPages;
+  return publishedPages;
 }
 
 export function getPosts(): PostPage[] {
@@ -120,11 +121,12 @@ export function getPosts(): PostPage[] {
   });
 
   const filteredPosts = pages.filter((page) => page.meta.title !== "README");
-  filteredPosts.sort((a, b) =>
+  const publishedPosts = filteredPosts.filter((page) => page.meta.published);
+  publishedPosts.sort((a, b) =>
     a.meta.created_at > b.meta.created_at ? -1 : 1,
   );
 
-  return filteredPosts;
+  return publishedPosts;
 }
 
 export function getProducts(): Product[] {
@@ -187,7 +189,10 @@ export function getProducts(): Product[] {
   const filteredProducts = products.filter(
     (product) => product.title !== "README",
   );
-  filteredProducts.sort((a, b) => (a.created_at > b.created_at ? -1 : 1));
+  const publishedProducts = filteredProducts.filter(
+    (product) => product.published,
+  );
+  publishedProducts.sort((a, b) => (a.created_at > b.created_at ? -1 : 1));
 
-  return filteredProducts;
+  return publishedProducts;
 }
