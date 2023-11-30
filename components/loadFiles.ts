@@ -24,9 +24,14 @@ function parseMetaTag(
   tags: null | string[],
   key: string,
   defaultValue: string,
-) {
+  check?: RegExp,
+): string {
   const tag = tags?.filter((tag) => tag.startsWith(`${key}:`))[0];
-  return tag ? tag.replace(`${key}:`, "") : defaultValue;
+  const value = tag && tag.replace(`${key}:`, "");
+  if (check === undefined) return value ?? defaultValue;
+  if (value && check.test(value)) return value;
+
+  return defaultValue;
 }
 
 export function getPages(): Page[] {
@@ -52,6 +57,7 @@ export function getPages(): Page[] {
       meta.tags,
       "path",
       `/${meta.title.toLowerCase()}`,
+      /^¥.*$/,
     );
 
     return {
@@ -90,7 +96,12 @@ export function getPosts(): Post[] {
 
     if (typeof meta.tags === "string") meta.tags = meta.tags.split(", ");
 
-    const createdAt = parseMetaTag(meta.tags, "at", meta.created_at);
+    const createdAt = parseMetaTag(
+      meta.tags,
+      "at",
+      meta.created_at,
+      /\d{4}-\d{2}-\d{2}/,
+    );
     meta.created_at = new Date(createdAt);
 
     const regex = /^[\s\n]*(<img.*?src=['"](.*)['"].*>|!\[.*\]\((.*)\))/;
