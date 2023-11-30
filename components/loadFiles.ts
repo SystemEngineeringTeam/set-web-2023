@@ -197,3 +197,9 @@ export function getProducts(): Product[] {
 
   return publishedProducts;
 }
+
+export function getMdFile(filePath: string) {
+  const absolutePath = path.join(process.cwd(), filePath);
+  const content = fs.readFileSync(absolutePath, "utf8");
+  return content;
+}

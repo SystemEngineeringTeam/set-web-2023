@@ -25,6 +25,15 @@ export default function Footer() {
             key={page.id}
           />
         ))}
+
+        <hr
+          className={css({
+            color: "primary.400",
+            margin: "10px 0",
+          })}
+        />
+
+        <MenuButton place="footer" text="Developper" path={"/dev"} />
       </div>
       <p
         className={css({
