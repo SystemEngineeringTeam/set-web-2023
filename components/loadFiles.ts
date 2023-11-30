@@ -84,6 +84,13 @@ export function getPosts(): Post[] {
     const createdAt = parseMetaTag(meta.tags, "at", meta.created_at);
     meta.created_at = new Date(createdAt);
 
+    const regex = /^[\s\n]*(<img.*?src=['"](.*)['"].*>|!\[.*\]\((.*)\))/;
+    const matches = md.content.match(regex);
+    md.content = md.content.replace(regex, "");
+
+    if (matches) meta.thumbnail = matches[2] || matches[3];
+    else meta.thumbnail = null;
+
     return {
       filename,
       id: md.data.number,
