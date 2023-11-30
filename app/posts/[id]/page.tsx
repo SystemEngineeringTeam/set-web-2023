@@ -69,7 +69,11 @@ export default function PostPage({ params }: Props) {
           })}
         >
           {post.meta.thumbnail && (
-            <Thumbnail src={post.meta.thumbnail} alt="thumbnail" />
+            <Thumbnail
+              src={post.meta.thumbnail}
+              alt="thumbnail"
+              height={"300px"}
+            />
           )}
 
           <Md2Html
