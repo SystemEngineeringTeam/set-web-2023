@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import MenuButton from "./MenuButton";
 import { ArrowUpIcon } from "@/components/icons";
