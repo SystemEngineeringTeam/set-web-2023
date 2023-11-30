@@ -19,18 +19,18 @@ export default function Home() {
   return (
     <main>
       <TopSection message={mdContents[0]} images={[hero, ...others]} />
+      <RecentPosts posts={posts} />
       {mdContents.splice(1).map((content, index) => {
         return (
           <>
-            <AboutSection key={index} content={content} />
             <ImageSection
               key={`parallax-${index}`}
               img={imagepathes[index % imagepathes.length].path}
             />
+            <AboutSection key={index} content={content} />
           </>
         );
       })}
-      <RecentPosts posts={posts} />
     </main>
   );
 }
