@@ -10,6 +10,13 @@ export default function Footer() {
       className={css({
         backgroundColor: "primary.200",
         width: "100vw",
+        display: "grid",
+        gridTemplateColumns: "1fr",
+        gridTemplateRows: "1fr 29px",
+
+        sm: {
+          gridTemplateColumns: "1fr 1px 1fr",
+        },
       })}
     >
       <div
@@ -25,7 +32,46 @@ export default function Footer() {
             key={page.id}
           />
         ))}
+
+        <div className={css({ margin: "10px 0" })} />
+
+        <MenuButton place="footer" text="Developper" path={"/dev"} />
       </div>
+
+      <div
+        className={css({
+          height: "100%",
+          maxHeight: "300px",
+          backgroundColor: "primary.400",
+          marginBlock: "auto",
+          display: "none",
+
+          sm: { display: "block" },
+        })}
+      />
+
+      <div
+        className={css({
+          display: "none",
+          alignItems: "center",
+          justifyContent: "center",
+
+          sm: { display: "flex" },
+        })}
+      >
+        <img
+          src="/logo/syscat.webp"
+          className={css({
+            width: "80%",
+            maxWidth: "200px",
+            display: "none",
+
+            sm: { display: "block" },
+          })}
+          alt="シスキャット"
+        />
+      </div>
+
       <p
         className={css({
           marginInline: "20px",
@@ -33,6 +79,9 @@ export default function Footer() {
           textAlign: "center",
           borderTop: "1px solid white",
           color: "white",
+          sm: {
+            gridColumn: "span 3",
+          },
         })}
       >
         SET @ 2023 Copyright.
