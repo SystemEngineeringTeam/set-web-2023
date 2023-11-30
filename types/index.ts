@@ -18,13 +18,14 @@ export type Page = {
   style: PageStyle;
   widthNarrow: boolean;
   sort: string;
+  other: boolean;
   filename: string;
   id: number;
   meta: PageMeta;
   content: string;
 };
 
-export type PostPage = Omit<Page, "path" | "style" | "sort">;
+export type PostPage = Omit<Page, "path" | "style" | "sort" | "other">;
 
 export type Product = {
   title: string;

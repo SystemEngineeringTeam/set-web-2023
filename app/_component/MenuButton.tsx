@@ -22,12 +22,17 @@ export const btn = cva({
       header: {
         _hover: { color: "primary.300" },
       },
+      other: {
+        marginInline: "auto",
+        height: "30px",
+        _hover: { color: "primary.300" },
+      },
     },
   },
 });
 
 type Props = {
-  place: "header" | "footer";
+  place: "header" | "footer" | "other";
   text: string;
   path: string;
 };
