@@ -1,6 +1,7 @@
 "use client";
 
 import MenuButton from "../MenuButton";
+import MultiMenuButton from "../MultipleMenuButton";
 import Battery from "./battery";
 import Clock from "./clock";
 import Logo from "./logo";
@@ -12,6 +13,9 @@ type Props = {
 };
 
 export default function HeaderBase({ pages }: Props) {
+  const singlePages = pages.filter((page) => !page.other);
+  const multiPages = pages.filter((page) => page.other);
+
   return (
     <header
       className={css({
@@ -33,7 +37,7 @@ export default function HeaderBase({ pages }: Props) {
       })}
     >
       <Logo />
-      {pages.map((page) => (
+      {singlePages.map((page) => (
         <MenuButton
           place="header"
           text={page.meta.title}
@@ -41,6 +45,8 @@ export default function HeaderBase({ pages }: Props) {
           key={page.id}
         />
       ))}
+
+      <MultiMenuButton pages={multiPages} />
 
       <span
         className={css({

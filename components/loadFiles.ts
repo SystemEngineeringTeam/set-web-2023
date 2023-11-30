@@ -54,6 +54,7 @@ export function getPages(): Page[] {
     const style = parseMetaTag(meta.tags, "style", "default");
     const sort = parseMetaTag(meta.tags, "sort", "last");
     const widthNarrow = parseMetaTag(meta.tags, "widthNarrow", "false");
+    const other = parseMetaTag(meta.tags, "other", "false");
     const path_ = parseMetaTag(
       meta.tags,
       "path",
@@ -63,8 +64,9 @@ export function getPages(): Page[] {
 
     return {
       path: path_.replace("¥", "/"),
-      style,
       widthNarrow: widthNarrow === "true",
+      other: other === "true",
+      style,
       sort,
       filename,
       id: md.data.number,
