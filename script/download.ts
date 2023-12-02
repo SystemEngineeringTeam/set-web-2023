@@ -108,7 +108,7 @@ function saveAndReplaceImages(content: string, fileId: string): string {
     void saveImage(imageUrl, fileId);
 
     const imageSrc = path
-      .join("/img/posts", fileId, getFileNameFromURL(imageUrl))
+      .join(IMAGE_DIR, fileId, getFileNameFromURL(imageUrl))
       .replace("public", "");
 
     // 画像のURLを置換
