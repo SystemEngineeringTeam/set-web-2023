@@ -13,7 +13,7 @@ export default function DevelopperLayout() {
         display: "grid",
         gridTemplateColumns: "1fr",
         gap: "20px",
-        
+
         sm: {
           padding: "40px",
           gridTemplateColumns: "repeat(2, 1fr)",
