@@ -3,7 +3,7 @@ import path from "path";
 import axios from "axios";
 
 const MARKDOWN_PATH = "public/markdown";
-const IMAGE_DIR = "public/img/posts";
+const IMAGE_DIR = "public/img/markdown";
 const IMAGE_REGEX = /<img.*?src=['"](.*)['"].*>|!\[.*\]\((.*)\)/g;
 const IMAGE_SRC_REGEX = /src=['"](.*)['"]/;
 const IMAGE_MARKDOWN_REGEX = /!\[.*\]\((.*)\)/;
@@ -25,7 +25,8 @@ function getFileNameFromURL(url: string): string {
  *
  * @return ID
  */
-function getFileId(fileName: string): string {
+function getFileId(filePath: string): string {
+  const fileName = path.basename(filePath);
   return fileName.split(".")[0];
 }
 
@@ -126,7 +127,31 @@ function saveAndReplaceImages(content: string, fileId: string): string {
   return replacedContent;
 }
 
-function main() {
+/*
+ * 変更されたファイルのみ実行する
+ * @param changeFiles 変更されたファイルの一覧
+ */
+function runOnlyChangeFiles(changeFiles: string) {
+  const files = changeFiles.replace(/'/g, "").split(" ");
+
+  files
+    .filter((file) => file.endsWith(".md"))
+    .forEach((filePath) => {
+      // ファイルの中身を取得
+      const fileContents = fs.readFileSync(filePath, "utf8");
+      // ファイル名からIDを取得
+      const fileId = getFileId(filePath);
+      // 画像を保存して、画像のURLを置換したファイルの中身を取得
+      const replacedContent = saveAndReplaceImages(fileContents, fileId);
+      // ファイルの中身を置換
+      fs.writeFileSync(filePath, replacedContent, "utf8");
+    });
+}
+
+/*
+ * 全てのファイルを実行する
+ */
+function runAllFiles() {
   const markdownDir = getDirectories(MARKDOWN_PATH);
   markdownDir.forEach((dirName) => {
     // mdファイルを取得
@@ -147,6 +172,12 @@ function main() {
         fs.writeFileSync(filePath, replacedContent, "utf8");
       });
   });
+}
+
+function main() {
+  const changeFiles = process.env.GIT_DIFF_FILTERED;
+  if (changeFiles) runOnlyChangeFiles(changeFiles);
+  else runAllFiles();
 }
 
 main();
