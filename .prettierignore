@@ -41,3 +41,5 @@ styled-system
 .eslintrc.json
 
 /public
+
+/app/dev/*.md
