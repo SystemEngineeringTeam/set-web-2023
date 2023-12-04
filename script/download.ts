@@ -1,12 +1,27 @@
+/* eslint-disable no-console */
 import fs from "fs";
 import path from "path";
 import axios from "axios";
 
+const { COMMIT_ID } = process.env;
+const DOWNLOAD_JSON = "script/.download.json";
 const MARKDOWN_PATH = "public/markdown";
 const IMAGE_DIR = "public/img/markdown";
 const IMAGE_REGEX = /<img.*?src=['"](.*)['"].*>|!\[.*\]\((.*)\)/g;
 const IMAGE_SRC_REGEX = /src=['"](.*)['"]/;
 const IMAGE_MARKDOWN_REGEX = /!\[.*\]\((.*)\)/;
+
+// エスケープ文字列
+const ESCAPE_CLEAR = "\u001b[2K\r";
+const ESCAPE_WHITE = "\u001b[37m";
+const ESCAPE_RED = "\u001b[31m";
+const ESCAPE_BLUE = "\u001b[34m";
+
+type DownloadData = {
+  [key: string]: string;
+};
+
+type Status = "Downloading" | "Downloaded" | "Failed";
 
 /*
  * URLからファイル名を取得する
@@ -70,11 +85,31 @@ function getImageURLs(content: string): string[] {
 }
 
 /*
+ * ステータスを表示する
+ * @param name ファイル名
+ * @param status ステータス
+ */
+function printStatus(name: string, status: Status): void {
+  switch (status) {
+    case "Downloading":
+      console.log(`${ESCAPE_CLEAR}${ESCAPE_WHITE}${status}: ${name}`);
+      break;
+    case "Downloaded":
+      console.log(`${ESCAPE_CLEAR}${ESCAPE_BLUE}${status}: ${name}`);
+      break;
+    case "Failed":
+      console.log(`${ESCAPE_CLEAR}${ESCAPE_RED}${status}: ${name}`);
+      break;
+  }
+}
+
+/*
  * 画像を保存する
  * @param url 画像のURL
  * @param fileId ファイルのID
  */
 async function saveImage(url: string, fileId: string): Promise<void> {
+  printStatus(url, "Downloading");
   axios
     .get(url, { responseType: "arraybuffer" })
     .then((res) => {
@@ -89,8 +124,9 @@ async function saveImage(url: string, fileId: string): Promise<void> {
       // 画像を保存
       const filePath = path.join(dirPath, fileName);
       fs.writeFileSync(filePath, res.data, "binary");
+      printStatus(url, "Downloaded");
     })
-    .catch(() => null);
+    .catch(() => printStatus(url, "Failed"));
 }
 
 /*
@@ -128,56 +164,72 @@ function saveAndReplaceImages(content: string, fileId: string): string {
 }
 
 /*
- * 変更されたファイルのみ実行する
- * @param changeFiles 変更されたファイルの一覧
+ * DOWNLOAD_JSON を読み込む
+ *
+ * @return DOWNLOAD_JSON の中身
  */
-function runOnlyChangeFiles(changeFiles: string) {
-  const files = changeFiles.replace(/'/g, "").split(" ");
+function laodDownloadJson(): DownloadData {
+  if (!fs.existsSync(DOWNLOAD_JSON)) return {};
 
-  files
-    .filter((file) => file.endsWith(".md"))
-    .forEach((filePath) => {
-      // ファイルの中身を取得
-      const fileContents = fs.readFileSync(filePath, "utf8");
-      // ファイル名からIDを取得
-      const fileId = getFileId(filePath);
-      // 画像を保存して、画像のURLを置換したファイルの中身を取得
-      const replacedContent = saveAndReplaceImages(fileContents, fileId);
-      // ファイルの中身を置換
-      fs.writeFileSync(filePath, replacedContent, "utf8");
-    });
+  const downloadJson = fs.readFileSync(DOWNLOAD_JSON, "utf8");
+  const downloadData = JSON.parse(downloadJson);
+  return downloadData as DownloadData;
 }
 
 /*
- * 全てのファイルを実行する
+ * ファイルがmdファイルかどうかを判定する
+ * @param filePath ファイルのパス
+ *
+ * @return mdファイルかどうか
  */
-function runAllFiles() {
+function isMDFile(filePath: string): boolean {
+  return filePath.endsWith(".md");
+}
+
+/*
+ * ファイルがダウンロード済みかどうかを判定する
+ * @param filePath ファイルのパス
+ * @param dd DOWNLOAD_JSON の中身
+ *
+ * @return ダウンロード済みかどうか
+ */
+function isDownloaded(filePath: string, dd: DownloadData): boolean {
+  if (COMMIT_ID === undefined) return false;
+  if (dd[filePath] === undefined) return false;
+  return dd[filePath] === COMMIT_ID;
+}
+
+function main() {
+  console.log(`COMMIT_ID: ${COMMIT_ID ?? "None"}`);
+
+  // DOWNLOAD_JSON があれば読み込む
+  const downloadData = laodDownloadJson();
+
   const markdownDir = getDirectories(MARKDOWN_PATH);
   markdownDir.forEach((dirName) => {
     // mdファイルを取得
     const files = fs.readdirSync(path.join(MARKDOWN_PATH, dirName));
 
     files
-      .filter((file) => file.endsWith(".md"))
-      .forEach((fileName) => {
+      .filter((file) => isMDFile(file) && !isDownloaded(file, downloadData))
+      .forEach((file) => {
         // ファイルパスを取得
-        const filePath = path.join(MARKDOWN_PATH, dirName, fileName);
+        const filePath = path.join(MARKDOWN_PATH, dirName, file);
         // ファイルの中身を取得
         const fileContents = fs.readFileSync(filePath, "utf8");
         // ファイル名からIDを取得
-        const fileId = getFileId(fileName);
+        const fileId = getFileId(file);
+
         // 画像を保存して、画像のURLを置換したファイルの中身を取得
         const replacedContent = saveAndReplaceImages(fileContents, fileId);
         // ファイルの中身を置換
         fs.writeFileSync(filePath, replacedContent, "utf8");
+        // ダウンロード済みにする
+        downloadData[filePath] = COMMIT_ID ?? "None";
       });
   });
-}
-
-function main() {
-  const changeFiles = process.env.GIT_DIFF_FILTERED;
-  if (changeFiles) runOnlyChangeFiles(changeFiles);
-  else runAllFiles();
+  const json = JSON.stringify(downloadData, null, 2);
+  fs.writeFileSync(DOWNLOAD_JSON, json, "utf8");
 }
 
 main();
