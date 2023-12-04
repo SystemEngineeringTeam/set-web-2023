@@ -47,7 +47,7 @@ jobs:
         run: yarn download
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "download: Download All Image From Posts Markdown."
+          commit_message: "download: Download All Image From Markdown."
 
   # Build job
   build:
