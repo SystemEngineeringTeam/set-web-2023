@@ -39,8 +39,8 @@ export default function Card({ product }: { product: Product }) {
             className={css({
               fontSize: "1.5rem",
               position: "absolute",
-              right: "20px",
-              top: "20px",
+              right: "10px",
+              top: "10px",
             })}
           />
         )}
