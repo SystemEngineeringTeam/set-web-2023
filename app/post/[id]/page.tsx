@@ -30,7 +30,6 @@ export default function Post({ params }: Props) {
   return (
     <main
       className={css({
-        minHeight: "100vh",
         padding: "80px 20px",
       })}
     >

@@ -7,6 +7,7 @@ import Footer from "./_component/footer";
 import Header from "./_component/header/header";
 import { getPages } from "@/components/loadFiles";
 import { DESCRIPTION, HOST_NAME, KEY_WORDS, SITE_NAME } from "@/const";
+import { css } from "@/styled-system/css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,7 +46,15 @@ export default function RootLayout({ children }: Props) {
 
   return (
     <html lang="ja">
-      <body className={inter.className}>
+      <body
+        className={css({
+          fontFamily: inter.style.fontFamily,
+
+          "&> main": {
+            minHeight: "100vh",
+          },
+        })}
+      >
         <Header pages={publishedPages} />
         {children}
         <Footer />

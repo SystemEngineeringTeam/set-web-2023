@@ -11,7 +11,6 @@ export default function Products() {
   return (
     <main
       className={css({
-        minHeight: "100vh",
         padding: "80px 20px",
       })}
     >

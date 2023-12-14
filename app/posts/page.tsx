@@ -14,7 +14,6 @@ export default function Posts() {
   return (
     <main
       className={css({
-        minHeight: "100vh",
         padding: "80px 20px",
       })}
     >
