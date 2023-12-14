@@ -32,7 +32,7 @@ export default function Item({ post }: Props) {
           backgroundColor: "#f5f5f5",
         },
       })}
-      onClick={() => router.push(`/posts/${post.id}`)}
+      onClick={() => router.push(`/post/${post.id}`)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
