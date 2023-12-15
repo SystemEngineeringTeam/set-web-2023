@@ -27,7 +27,7 @@ concurrency:
 jobs:
   # Download Images
   download-img:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latesta
     steps:
       - uses: actions/checkout@v3
         with:
