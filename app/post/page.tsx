@@ -7,12 +7,12 @@ export default function RedirectToPosts() {
   const router = useRouter();
 
   useEffect(() => {
-    router.push("/posts");
+    router.push("/posts/1");
   }, [router]);
 
   return (
     <main>
-      <p>/posts へ移動します</p>
+      <p>/posts/1 へ移動します</p>
     </main>
   );
 }
