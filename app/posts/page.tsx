@@ -1,10 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function RedirectToPosts() {
   const router = useRouter();
-  router.push("/posts/1");
+
+  useEffect(() => {
+    router.push("/posts/1");
+  }, [router]);
 
   return (
     <main>
