@@ -25,7 +25,7 @@ export default function Card({ post }: Props) {
         position: "relative",
         cursor: "pointer",
       })}
-      onClick={() => router.push(`/posts/${post.id}`)}
+      onClick={() => router.push(`/post/${post.id}`)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >

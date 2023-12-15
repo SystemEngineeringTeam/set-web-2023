@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const postsSiteMap: MetadataRoute.Sitemap = posts.map((p) => {
     return {
-      url: new URL(`posts/${p.id}`, HOST_NAME).toString(),
+      url: new URL(`post/${p.id}`, HOST_NAME).toString(),
       lastModified: p.meta.updated_at,
       changeFrequency: "never",
       priority: 0.5,

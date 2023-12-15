@@ -8,7 +8,6 @@ export default function DevelopperLayout() {
     <main
       className={css({
         marginTop: "40px",
-        minHeight: "100vh",
         padding: "10px",
         display: "grid",
         gridTemplateColumns: "1fr",
