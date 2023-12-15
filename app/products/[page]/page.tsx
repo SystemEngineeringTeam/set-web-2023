@@ -25,11 +25,9 @@ export default function Products({ params }: Props) {
   const rangeMin = (Number(params.page) - 1) * CONTENTS_NUM;
 
   const products = getProducts();
-  const publishedProducts = products
-    .splice(rangeMin, CONTENTS_NUM)
-    .filter((product) => product.published);
-  const pages = getPages();
   const pagenationMax = Math.ceil(products.length / CONTENTS_NUM);
+  const displayProducts = products.splice(rangeMin, CONTENTS_NUM);
+  const pages = getPages();
   const productsPage = pages.find((page) => page.path === "/products")!;
 
   return (
@@ -63,7 +61,7 @@ export default function Products({ params }: Props) {
             gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
           })}
         >
-          {publishedProducts.map((product) => (
+          {displayProducts.map((product) => (
             <Card key={product.id} product={product} />
           ))}
         </section>
