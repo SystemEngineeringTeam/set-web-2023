@@ -25,10 +25,8 @@ export default function Posts({ params }: Props) {
   const rangeMin = (Number(params.page) - 1) * CONTENTS_NUM;
 
   const posts = getPosts();
-  const publishedPosts = posts
-    .splice(rangeMin, CONTENTS_NUM)
-    .filter((post) => post.meta.published);
   const pages = getPages();
+  const displayPosts = posts.splice(rangeMin, CONTENTS_NUM);
   const pagenationMax = Math.ceil(posts.length / CONTENTS_NUM);
 
   const postsPage = pages.find((page) => page.path === "/posts");
@@ -58,7 +56,7 @@ export default function Posts({ params }: Props) {
           {postsPage ? postsPage.meta.title : "Posts"}
         </h1>
 
-        <List publishedPosts={publishedPosts} />
+        <List publishedPosts={displayPosts} />
       </div>
 
       <Pagenation

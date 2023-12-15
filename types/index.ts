@@ -8,7 +8,6 @@ export type PageMeta = {
   tags: null | string[];
   created_at: Date;
   updated_at: Date;
-  published: boolean;
   number: number;
   thumbnail: string | null;
 };
@@ -30,7 +29,6 @@ export type PostPage = Omit<Page, "path" | "style" | "sort" | "other">;
 export type Product = {
   title: string;
   created_at: Date;
-  published: boolean;
   author: string | null;
   thumbnail: string | null;
   description: string | null;
