@@ -146,7 +146,7 @@ export function getProducts(): Product[] {
       meta.tags,
       "at",
       meta.created_at,
-      /\d{4}-\d{2}-\d{2}/,
+      /^\d{4}-\d{1,2}-\d{1,2}$/,
     );
 
     const content = md.content.split(/\n+/);
