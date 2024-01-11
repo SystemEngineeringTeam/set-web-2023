@@ -26,8 +26,8 @@ export default function Posts({ params }: Props) {
 
   const posts = getPosts();
   const pages = getPages();
-  const displayPosts = posts.splice(rangeMin, CONTENTS_NUM);
   const pagenationMax = Math.ceil(posts.length / CONTENTS_NUM);
+  const displayPosts = posts.splice(rangeMin, CONTENTS_NUM);
 
   const postsPage = pages.find((page) => page.path === "/posts");
   const widthNarrow = postsPage ? postsPage.widthNarrow : false;
