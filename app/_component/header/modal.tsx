@@ -1,6 +1,3 @@
-"use client";
-
-import { useRouter } from "next/navigation";
 import { CloseIcon } from "@/components/icons";
 import { css } from "@/styled-system/css";
 import { Page } from "@/types";
@@ -12,8 +9,6 @@ type Props = {
 };
 
 export default function Modal({ opened, close, pages }: Props) {
-  const router = useRouter();
-
   return (
     <div
       className={css({
@@ -71,11 +66,12 @@ export default function Modal({ opened, close, pages }: Props) {
                 position: "relative",
                 cursor: "pointer",
               })}
-              onClick={() => router.push(page.path)}
               key={page.id}
             >
-              {"- "}
-              {page.meta.title}
+              <a href={page.path}>
+                {"- "}
+                {page.meta.title}
+              </a>
             </li>
           ))}
         </ul>

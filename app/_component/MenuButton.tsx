@@ -1,6 +1,3 @@
-"use client";
-
-import { useRouter } from "next/navigation";
 import { cva } from "@/styled-system/css";
 
 export const btn = cva({
@@ -38,11 +35,9 @@ type Props = {
 };
 
 export default function MenuButton({ place, text, path }: Props) {
-  const router = useRouter();
-
   return (
-    <button className={btn({ place })} onClick={() => router.push(path)}>
+    <a href={path} className={btn({ place })}>
       {text}
-    </button>
+    </a>
   );
 }
