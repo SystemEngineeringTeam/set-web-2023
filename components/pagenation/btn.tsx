@@ -1,6 +1,3 @@
-"use client";
-
-import { useRouter } from "next/navigation";
 import { css } from "@/styled-system/css";
 
 type Props = {
@@ -18,10 +15,9 @@ export default function Button({
   isCurrent,
   isHide,
 }: Props) {
-  const router = useRouter();
-
   return (
-    <button
+    <a
+      href={pagePath}
       className={css({
         marginInline: "5px",
         width: "30px",
@@ -36,9 +32,8 @@ export default function Button({
         backgroundColor: isCurrent ? "primary.400" : "transparent",
         visibility: isHide ? "hidden" : "visible",
       })}
-      onClick={() => router.push(pagePath)}
     >
       {pageNum}
-    </button>
+    </a>
   );
 }
