@@ -14,7 +14,7 @@
     "fix:prettier": "prettier  --write ./",
     "fix:lint": "eslint --ext .js,jsx,.ts,.tsx --fix",
     "download": "./node_modules/.bin/ts-node ./script/download.ts",
-    "towebp": "./node_modules/.bin/ts-node ./script/convertwebp.ts"
+    "convert": "./node_modules/.bin/ts-node ./script/convert.ts"
   },
   "dependencies": {
     "@mantine/core": "^7.2.2",
