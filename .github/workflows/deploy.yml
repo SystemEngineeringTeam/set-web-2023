@@ -49,10 +49,38 @@ jobs:
         with:
           commit_message: 'download: Download All Image From Markdown.'
 
+  # Convert Images
+  convert-img:
+    runs-on: ubuntu-latest
+    needs: download-img
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: technote-space/get-diff-action@v6
+        with:
+          PATTERNS: |
+            public/**/*.md
+      - name: Install xmllint
+        run: sudo apt-get install webp
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: yarn install
+      - name: Run Convert
+        env:
+          COMMIT_ID: ${{ github.sha }}
+        run: yarn convert
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'convert: Resize all images and convert to webp.'
+      
+
   # Build job
   build:
     runs-on: ubuntu-latest
-    needs: download-img
+    needs: [download-img, convert-img]
     steps:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.8.0
