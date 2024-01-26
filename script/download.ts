@@ -103,7 +103,7 @@ async function saveImage(url: string, fileId: string): Promise<void> {
 function saveAndReplaceImages(content: string, fileId: string): string {
   // 画像のURLを取得
   const imageUrls = getImageURLs(content);
-  const replacImageUrls = imageUrls.map((imageUrl) => {
+  imageUrls.forEach((imageUrl) => {
     // 画像を保存して、画像のパスを取得
     void saveImage(imageUrl, fileId);
 
@@ -119,12 +119,7 @@ function saveAndReplaceImages(content: string, fileId: string): string {
     };
   });
 
-  // 画像のURLを置換したファイルの中身を返す
-  const replacedContent = replacImageUrls.reduce((curContent, img) => {
-    return curContent.replace(img.original, img.replaced);
-  }, content);
-
-  return replacedContent;
+  return content;
 }
 
 function main() {
