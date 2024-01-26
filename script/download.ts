@@ -4,9 +4,9 @@ import axios from "axios";
 
 const MARKDOWN_PATH = "public/markdown";
 const IMAGE_DIR = "public/img/markdown";
-const IMAGE_REGEX = /<img.*?src=['"](.*)['"].*>|!\[.*\]\((.*)\)/g;
-const IMAGE_SRC_REGEX = /src=['"](.*)['"]/;
-const IMAGE_MARKDOWN_REGEX = /!\[.*\]\((.*)\)/;
+const IMAGE_REGEX = /<img.*?src=['"](\S*?)['"].*>|!\[.*\]\(([^)]+\.\w{1,5})/g;
+const IMAGE_SRC_REGEX = /src=['"](\S*?)['"]/;
+const IMAGE_MARKDOWN_REGEX = /!\[.*\]\(([^)]+\.\w{1,5})/;
 
 /*
  * URLからファイル名を取得する
