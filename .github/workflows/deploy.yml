@@ -51,6 +51,7 @@ jobs:
 
   # Convert Images
   convert-img:
+    runs-on: ubuntu-latest
     needs: download-img
     steps:
       - uses: actions/checkout@v3
