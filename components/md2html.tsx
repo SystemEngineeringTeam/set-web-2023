@@ -1,10 +1,10 @@
-import ReactMarkdown from "react-markdown";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import rehypeRaw from "rehype-raw";
-import rehypeStringify from "rehype-stringify";
-import remarkBreaks from "remark-breaks";
-import remarkGfm from "remark-gfm";
-import remarkRehype from "remark-rehype";
+import ReactMarkdown from 'react-markdown';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import rehypeRaw from 'rehype-raw';
+import rehypeStringify from 'rehype-stringify';
+import remarkBreaks from 'remark-breaks';
+import remarkGfm from 'remark-gfm';
+import remarkRehype from 'remark-rehype';
 
 type Props = {
   content: string;
@@ -25,10 +25,10 @@ export default function Md2Html({ content, className }: Props) {
       components={{
         code(props) {
           const { children, className, ...rest } = props;
-          const match = /language-(\w+)/.exec(className || "");
+          const match = /language-(\w+)/.exec(className || '');
           return match ? (
             <SyntaxHighlighter language={match[1]} PreTag="div">
-              {String(children).replace(/\n$/, "")}
+              {String(children).replace(/\n$/, '')}
             </SyntaxHighlighter>
           ) : (
             <code {...rest} className={className}>

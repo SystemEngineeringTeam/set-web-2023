@@ -1,5 +1,5 @@
-import { exec } from "child_process";
-import fs from "fs";
+import { exec } from 'child_process';
+import fs from 'fs';
 import path from 'path';
 
 const MARKDOWN_PATH = 'public/markdown';
@@ -35,13 +35,16 @@ function toAbsolutePath(relativePath: string) {
 async function toWebp(imagePath: string) {
   const absolutePath = toAbsolutePath(imagePath);
   const absoluteWebpPath = toAbsolutePath(toWebpPath(imagePath));
-  exec(`cwebp -resize 810 0 ${absolutePath} -o ${absoluteWebpPath}`, (error) => {
-    if (error) {
-      console.error(`Error: ${error.message}`);
-      return;
-    }
-    exec(`rm ${absolutePath}`);
-  });
+  exec(
+    `cwebp -resize 810 0 ${absolutePath} -o ${absoluteWebpPath}`,
+    (error) => {
+      if (error) {
+        console.error(`Error: ${error.message}`);
+        return;
+      }
+      exec(`rm ${absolutePath}`);
+    },
+  );
 }
 
 /*
@@ -80,7 +83,7 @@ function getImagePathes(content: string): string[] {
     throw new Error(`No image match.\n${img}`);
   });
 
-  return imgSrcMatch?.filter((p) => p.startsWith("/img")) || [];
+  return imgSrcMatch?.filter((p) => p.startsWith('/img')) || [];
 }
 
 /*
@@ -95,7 +98,7 @@ function saveAndReplaceImages(content: string): string {
   const imagePathes = getImagePathes(content);
   imagePathes.forEach((imagePath) => {
     // 画像を保存して、画像のパスを取得
-    void toWebp(path.join("public", imagePath));
+    void toWebp(path.join('public', imagePath));
 
     const imageSrc = toWebpPath(imagePath);
 

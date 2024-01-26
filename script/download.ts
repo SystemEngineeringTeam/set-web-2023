@@ -1,9 +1,9 @@
-import fs from "fs";
-import path from "path";
-import axios from "axios";
+import fs from 'fs';
+import path from 'path';
+import axios from 'axios';
 
-const MARKDOWN_PATH = "public/markdown";
-const IMAGE_DIR = "public/img/markdown";
+const MARKDOWN_PATH = 'public/markdown';
+const IMAGE_DIR = 'public/img/markdown';
 const IMAGE_REGEX = /<img.*?src=['"](\S*?)['"].*>|!\[.*\]\(([^)]+\.\w{1,5})/g;
 const IMAGE_SRC_REGEX = /src=['"](\S*?)['"]/;
 const IMAGE_MARKDOWN_REGEX = /!\[.*\]\(([^)]+\.\w{1,5})/;
@@ -16,7 +16,7 @@ const IMAGE_MARKDOWN_REGEX = /!\[.*\]\(([^)]+\.\w{1,5})/;
  */
 function getFileNameFromURL(url: string): string {
   const urlObject = new URL(url);
-  return urlObject.pathname.split("/").pop()!;
+  return urlObject.pathname.split('/').pop()!;
 }
 
 /*
@@ -27,7 +27,7 @@ function getFileNameFromURL(url: string): string {
  */
 function getFileId(filePath: string): string {
   const fileName = path.basename(filePath);
-  return fileName.split(".")[0];
+  return fileName.split('.')[0];
 }
 
 /*
@@ -66,7 +66,7 @@ function getImageURLs(content: string): string[] {
     throw new Error(`No image match.\n${img}`);
   });
 
-  return imgSrcMatch?.filter((img) => img.startsWith("http")) ?? [];
+  return imgSrcMatch?.filter((img) => img.startsWith('http')) ?? [];
 }
 
 /*
@@ -76,7 +76,7 @@ function getImageURLs(content: string): string[] {
  */
 async function saveImage(url: string, fileId: string): Promise<void> {
   axios
-    .get(url, { responseType: "arraybuffer" })
+    .get(url, { responseType: 'arraybuffer' })
     .then((res) => {
       // 画像のファイル名を取得
       const fileName = getFileNameFromURL(url);
@@ -88,7 +88,7 @@ async function saveImage(url: string, fileId: string): Promise<void> {
 
       // 画像を保存
       const filePath = path.join(dirPath, fileName);
-      fs.writeFileSync(filePath, res.data, "binary");
+      fs.writeFileSync(filePath, res.data, 'binary');
     })
     .catch(() => null);
 }
@@ -109,7 +109,7 @@ function saveAndReplaceImages(content: string, fileId: string): string {
 
     const imageSrc = path
       .join(IMAGE_DIR, fileId, getFileNameFromURL(imageUrl))
-      .replace("public", "");
+      .replace('public', '');
 
     // 画像のURLを置換
     if (imageSrc) content = content.replace(imageUrl, imageSrc);
@@ -129,18 +129,18 @@ function main() {
     const files = fs.readdirSync(path.join(MARKDOWN_PATH, dirName));
 
     files
-      .filter((file) => file.endsWith(".md"))
+      .filter((file) => file.endsWith('.md'))
       .forEach((fileName) => {
         // ファイルパスを取得
         const filePath = path.join(MARKDOWN_PATH, dirName, fileName);
         // ファイルの中身を取得
-        const fileContents = fs.readFileSync(filePath, "utf8");
+        const fileContents = fs.readFileSync(filePath, 'utf8');
         // ファイル名からIDを取得
         const fileId = getFileId(fileName);
         // 画像を保存して、画像のURLを置換したファイルの中身を取得
         const replacedContent = saveAndReplaceImages(fileContents, fileId);
         // ファイルの中身を置換
-        fs.writeFileSync(filePath, replacedContent, "utf8");
+        fs.writeFileSync(filePath, replacedContent, 'utf8');
       });
   });
 }

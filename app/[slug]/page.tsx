@@ -1,10 +1,10 @@
-import { Metadata } from "next";
-import { getPages } from "@/components/loadFiles";
-import Md2Html from "@/components/md2html";
-import { specialPath } from "@/const";
-import { css } from "@/styled-system/css";
-import { mdStyle } from "@/styled-system/patterns";
-import { Page } from "@/types";
+import { Metadata } from 'next';
+import { getPages } from '@/components/loadFiles';
+import Md2Html from '@/components/md2html';
+import { specialPath } from '@/const';
+import { css } from '@/styled-system/css';
+import { mdStyle } from '@/styled-system/patterns';
+import { Page } from '@/types';
 
 export const generateStaticParams = () => {
   const pages = getPages();
@@ -13,7 +13,7 @@ export const generateStaticParams = () => {
   );
 
   return filteredPages.map((page) => ({
-    slug: page.path.replace("/", ""),
+    slug: page.path.replace('/', ''),
   }));
 };
 
@@ -30,21 +30,21 @@ export default function Pages({ params }: Props) {
   return (
     <main
       className={css({
-        padding: "80px 20px",
+        padding: '80px 20px',
       })}
     >
       <div
         className={css({
-          maxWidth: "800px",
-          margin: "0 auto",
+          maxWidth: '800px',
+          margin: '0 auto',
         })}
       >
         <h1
           className={css({
-            fontSize: "2rem",
+            fontSize: '2rem',
             fontWeight: 700,
-            marginBottom: "1rem",
-            borderBottom: "1px solid black",
+            marginBottom: '1rem',
+            borderBottom: '1px solid black',
           })}
         >
           {page.meta.title}
@@ -52,8 +52,8 @@ export default function Pages({ params }: Props) {
 
         <div
           className={css({
-            maxWidth: page.widthNarrow ? "600px" : "100%",
-            marginInline: "auto",
+            maxWidth: page.widthNarrow ? '600px' : '100%',
+            marginInline: 'auto',
           })}
         >
           <Md2Html

@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Thumbnail from "@/components/thumbnail";
-import { formatdate } from "@/components/util";
-import { DEFAULT_POST_THUMBNAIL } from "@/const";
-import { css } from "@/styled-system/css";
-import { PostPage } from "@/types";
+import { useState } from 'react';
+import Thumbnail from '@/components/thumbnail';
+import { formatdate } from '@/components/util';
+import { DEFAULT_POST_THUMBNAIL } from '@/const';
+import { css } from '@/styled-system/css';
+import { PostPage } from '@/types';
 
 type Props = {
   post: PostPage;
@@ -19,16 +19,16 @@ export default function Item({ post }: Props) {
       <div
         key={post.id}
         className={css({
-          padding: "10px",
-          cursor: "pointer",
-          transition: "background-color 0.3s",
-          gridRow: "span 3",
-          display: "grid",
-          gridTemplateRows: "subgrid",
-          gap: "10px",
+          padding: '10px',
+          cursor: 'pointer',
+          transition: 'background-color 0.3s',
+          gridRow: 'span 3',
+          display: 'grid',
+          gridTemplateRows: 'subgrid',
+          gap: '10px',
 
           _hover: {
-            backgroundColor: "#f5f5f5",
+            backgroundColor: '#f5f5f5',
           },
         })}
         onMouseEnter={() => setHovered(true)}
@@ -43,9 +43,9 @@ export default function Item({ post }: Props) {
         <span>{formatdate(post.meta.created_at)}</span>
         <h2
           className={css({
-            height: "4.5rem",
-            overflow: "hidden",
-            fontSize: "1.5rem",
+            height: '4.5rem',
+            overflow: 'hidden',
+            fontSize: '1.5rem',
             fontWeight: 700,
           })}
         >

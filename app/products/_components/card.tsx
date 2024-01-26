@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { OpenInNewIcon } from "@/components/icons";
-import Thumbnail from "@/components/thumbnail";
-import { formatdate, toOpen } from "@/components/util";
-import { DEFAULT_PRODUCT_THUMBNAIL } from "@/const";
-import { css } from "@/styled-system/css";
-import { Product } from "@/types";
+import { useState } from 'react';
+import { OpenInNewIcon } from '@/components/icons';
+import Thumbnail from '@/components/thumbnail';
+import { formatdate, toOpen } from '@/components/util';
+import { DEFAULT_PRODUCT_THUMBNAIL } from '@/const';
+import { css } from '@/styled-system/css';
+import { Product } from '@/types';
 
 export default function Card({ product }: { product: Product }) {
   const [hovered, setHovered] = useState(false);
@@ -14,9 +14,9 @@ export default function Card({ product }: { product: Product }) {
   return (
     <div
       className={css({
-        boxShadow: "4px 2px 10px -5px #777777",
-        borderRadius: "5px",
-        cursor: "pointer",
+        boxShadow: '4px 2px 10px -5px #777777',
+        borderRadius: '5px',
+        cursor: 'pointer',
       })}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -30,52 +30,52 @@ export default function Card({ product }: { product: Product }) {
       />
       <div
         className={css({
-          padding: "10px 20px",
-          position: "relative",
+          padding: '10px 20px',
+          position: 'relative',
         })}
       >
         {product.link && (
           <OpenInNewIcon
             className={css({
-              fontSize: "1.5rem",
-              position: "absolute",
-              right: "10px",
-              top: "10px",
+              fontSize: '1.5rem',
+              position: 'absolute',
+              right: '10px',
+              top: '10px',
             })}
           />
         )}
         <h3
           className={css({
-            width: "calc(100% - 20px)",
-            fontSize: "1.4rem",
-            fontWeight: "bold",
-            lineHeight: "1.7rem",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
+            width: 'calc(100% - 20px)',
+            fontSize: '1.4rem',
+            fontWeight: 'bold',
+            lineHeight: '1.7rem',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
           })}
         >
           {product.title}
         </h3>
         <p
           className={css({
-            fontSize: "1rem",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
+            fontSize: '1rem',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
           })}
         >
           {product.description}
         </p>
         <div
           className={css({
-            paddingTop: "10px",
+            paddingTop: '10px',
           })}
         >
           <p>{product.author}</p>
           <p
             className={css({
-              textAlign: "end",
+              textAlign: 'end',
             })}
           >
             {formatdate(product.created_at)}

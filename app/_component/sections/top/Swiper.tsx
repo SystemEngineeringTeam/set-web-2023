@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { Autoplay, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { css } from "@/styled-system/css";
-import { Image } from "@/types";
+import { Autoplay, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { css } from '@/styled-system/css';
+import { Image } from '@/types';
 
 export function Carousel({ images }: { images: Image[] }) {
   return (
@@ -25,22 +25,22 @@ export function Carousel({ images }: { images: Image[] }) {
           <SwiperSlide key={i}>
             <div
               className={css({
-                height: "calc(100vh - 40px)",
-                paddingTop: "40px",
-                position: "relative",
+                height: 'calc(100vh - 40px)',
+                paddingTop: '40px',
+                position: 'relative',
               })}
             >
               <img
                 src={image.path}
                 alt="test_image"
                 className={css({
-                  position: "absolute",
-                  height: "100%",
-                  width: "100%",
+                  position: 'absolute',
+                  height: '100%',
+                  width: '100%',
                   inset: 0,
-                  objectFit: "cover",
-                  color: "transparent",
-                  filter: "opacity(0.7) blur(1px)",
+                  objectFit: 'cover',
+                  color: 'transparent',
+                  filter: 'opacity(0.7) blur(1px)',
                 })}
               />
             </div>

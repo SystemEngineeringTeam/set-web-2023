@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { toDigits } from "@/components/util";
-import { css } from "@/styled-system/css";
+import { useEffect, useState } from 'react';
+import { toDigits } from '@/components/util';
+import { css } from '@/styled-system/css';
 
 export default function Clock() {
   const [time, setTime] = useState<null | Date>(null);
@@ -20,8 +20,8 @@ export default function Clock() {
         <>
           <span
             className={css({
-              width: "17px",
-              display: "inline-block",
+              width: '17px',
+              display: 'inline-block',
             })}
           >
             {time.getMonth() + 1}
@@ -29,8 +29,8 @@ export default function Clock() {
           <span>月</span>
           <span
             className={css({
-              width: "20px",
-              display: "inline-block",
+              width: '20px',
+              display: 'inline-block',
             })}
           >
             {time.getDate()}
@@ -38,14 +38,14 @@ export default function Clock() {
           <span>日</span>
           <span
             className={css({
-              display: "inline-block",
-              width: "5px",
+              display: 'inline-block',
+              width: '5px',
             })}
           />
           <span
             className={css({
-              width: "20px",
-              display: "inline-block",
+              width: '20px',
+              display: 'inline-block',
             })}
           >
             {toDigits(time.getHours(), 2)}
@@ -53,8 +53,8 @@ export default function Clock() {
           <span>:</span>
           <span
             className={css({
-              width: "20px",
-              display: "inline-block",
+              width: '20px',
+              display: 'inline-block',
             })}
           >
             {toDigits(time.getMinutes(), 2)}
