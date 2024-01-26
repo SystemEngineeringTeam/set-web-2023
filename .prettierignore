@@ -43,3 +43,7 @@ styled-system
 /public
 
 /app/dev/*.md
+next.config.js
+panda.config.ts
+postcss.config.cjs
+*.md

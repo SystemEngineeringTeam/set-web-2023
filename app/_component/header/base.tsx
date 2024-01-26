@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import MenuButton from "../MenuButton";
-import MultiMenuButton from "../MultipleMenuButton";
-import Battery from "./battery";
-import Clock from "./clock";
-import Logo from "./logo";
-import { css } from "@/styled-system/css";
-import { Page } from "@/types";
+import MenuButton from '../MenuButton';
+import MultiMenuButton from '../MultipleMenuButton';
+import Battery from './battery';
+import Clock from './clock';
+import Logo from './logo';
+import { css } from '@/styled-system/css';
+import { Page } from '@/types';
 
 type Props = {
   pages: Page[];
@@ -19,20 +19,20 @@ export default function HeaderBase({ pages }: Props) {
   return (
     <header
       className={css({
-        height: "40px",
-        padding: "0 10px",
-        backgroundColor: "primary.500",
-        position: "fixed",
+        height: '40px',
+        padding: '0 10px',
+        backgroundColor: 'primary.500',
+        position: 'fixed',
         top: 0,
         left: 0,
         right: 0,
         zIndex: 1000,
-        display: "none",
-        alignItems: "center",
-        gap: "10px",
+        display: 'none',
+        alignItems: 'center',
+        gap: '10px',
 
         sm: {
-          display: "flex",
+          display: 'flex',
         },
       })}
     >
@@ -50,7 +50,7 @@ export default function HeaderBase({ pages }: Props) {
 
       <span
         className={css({
-          marginInline: "auto",
+          marginInline: 'auto',
         })}
       />
 

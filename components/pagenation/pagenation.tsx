@@ -1,7 +1,7 @@
-import { getPagenationNums } from "../util";
-import Button from "./btn";
-import Leader from "./leader";
-import { css } from "@/styled-system/css";
+import { getPagenationNums } from '../util';
+import Button from './btn';
+import Leader from './leader';
+import { css } from '@/styled-system/css';
 
 type Props = {
   pageNum: number;
@@ -17,9 +17,9 @@ export default function Pagenation({ pageNum, PageMax, getPath }: Props) {
   return (
     <div
       className={css({
-        margin: "40px auto 0 auto",
-        width: "fit-content",
-        userSelect: "none",
+        margin: '40px auto 0 auto',
+        width: 'fit-content',
+        userSelect: 'none',
       })}
     >
       <Button

@@ -23,4 +23,4 @@ jobs:
         run: yarn fix:prettier
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "format: Apply Prettier Change"
+          commit_message: 'format: Apply Prettier Change'

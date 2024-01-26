@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useDisclosure } from "@mantine/hooks";
-import Modal from "../header/modal";
-import HeaderBase from "./base";
-import HeaderSm from "./sm";
-import { Page } from "@/types";
+import { useDisclosure } from '@mantine/hooks';
+import Modal from '../header/modal';
+import HeaderBase from './base';
+import HeaderSm from './sm';
+import { Page } from '@/types';
 
 type Props = {
   pages: Page[];

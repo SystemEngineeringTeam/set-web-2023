@@ -1,12 +1,12 @@
 export function getTextFromMd(md: string) {
   const text = md
-    .replace(/#+ .*\n/g, "")
-    .replace(/[ |:\\*-]/g, "")
-    .replace(/<.+>/g, "")
-    .replace(/\*/g, "")
-    .replace(/`/g, "")
-    .replace(/\\/g, "")
-    .replace(/\[.*\]\(.*\)/g, "");
+    .replace(/#+ .*\n/g, '')
+    .replace(/[ |:\\*-]/g, '')
+    .replace(/<.+>/g, '')
+    .replace(/\*/g, '')
+    .replace(/`/g, '')
+    .replace(/\\/g, '')
+    .replace(/\[.*\]\(.*\)/g, '');
   return text;
 }
 
@@ -19,11 +19,11 @@ export function formatdate(date: Date) {
 }
 
 export function toDigits(num: number, n: number): string {
-  return `${num}`.padStart(n, "0");
+  return `${num}`.padStart(n, '0');
 }
 
 export function toOpen(url: string) {
-  window.open(url, "_blank");
+  window.open(url, '_blank');
 }
 
 export function getPagenationNums(

@@ -1,6 +1,6 @@
-import Item from "./item";
-import { css } from "@/styled-system/css";
-import { PostPage } from "@/types";
+import Item from './item';
+import { css } from '@/styled-system/css';
+import { PostPage } from '@/types';
 
 export default function List({
   publishedPosts,
@@ -10,9 +10,9 @@ export default function List({
   return (
     <div
       className={css({
-        display: "grid",
-        gap: "20px",
-        gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+        display: 'grid',
+        gap: '20px',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
       })}
     >
       {publishedPosts.map((post) => (
