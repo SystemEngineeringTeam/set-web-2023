@@ -44,10 +44,6 @@ jobs:
       - name: Run Download
         env:
           COMMIT_ID: ${{ github.sha }}
-        run: yarn download
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'download: Download All Image From Markdown.'
 
   # Convert Images
   convert-img:
@@ -61,7 +57,7 @@ jobs:
         with:
           PATTERNS: |
             public/**/*.md
-      - name: Install xmllint
+      - name: Install webp
         run: sudo apt-get install webp
       - uses: actions/setup-node@v3
         with:
