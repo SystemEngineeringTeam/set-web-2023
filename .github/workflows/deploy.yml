@@ -44,6 +44,7 @@ jobs:
       - name: Run Download
         env:
           COMMIT_ID: ${{ github.sha }}
+        run: yarn download
 
   # Convert Images
   convert-img:
