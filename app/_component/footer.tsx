@@ -75,7 +75,7 @@ export default function Footer() {
           },
         })}
       >
-        SET @ 2023 Copyright.
+        SET © 2024 Copyright.
       </p>
     </footer>
   );
