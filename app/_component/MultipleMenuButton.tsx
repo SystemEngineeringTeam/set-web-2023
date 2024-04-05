@@ -48,7 +48,6 @@ export default function MultiMenuButton({ pages }: Props) {
       <div
         className={css({
           height: "30px",
-          width: "100px",
           backgroundColor: "primary.500",
           position: "absolute",
           bottom: "-100%",
@@ -68,6 +67,8 @@ export default function MultiMenuButton({ pages }: Props) {
             className={css({
               lineHeight: "30px",
               paddingInline: "10px",
+              textWrap: "nowrap",
+              textAlign: "center",
             })}
             onClick={() => setOpened(false)}
           >
