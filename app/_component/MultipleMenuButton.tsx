@@ -39,7 +39,7 @@ export default function MultiMenuButton({ pages }: Props) {
             transition: "transform 0.3s",
           })}
           style={{
-            transform: opened ? "rotate(180deg)" : "rotate(0deg)",
+            transform: opened ? "rotate(0deg)" : "rotate(180deg)",
           }}
         />
         Other
