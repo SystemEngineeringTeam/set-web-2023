@@ -1,4 +1,4 @@
-import { mdStyles } from "@/const/index";
+import { mdStyles } from '@/const/index';
 
 export type PageStyle = (typeof mdStyles)[number];
 
@@ -24,10 +24,10 @@ export type Page = {
   content: string;
 };
 
-export type PostPage = Omit<Page, "path" | "style" | "sort" | "other">;
+export type PostPage = Omit<Page, 'path' | 'style' | 'sort' | 'other'>;
 export type NoticePage = Omit<
   Page,
-  "path" | "style" | "widthNarrow" | "other" | "sort"
+  'path' | 'style' | 'widthNarrow' | 'other' | 'sort'
 > & {
   category: string;
   deadline: Date;

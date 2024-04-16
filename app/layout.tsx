@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import React from 'react';
 import './globals.css';
 import 'swiper/css/bundle';
+import Analytics from './_component/Analytics';
 import Footer from './_component/footer';
 import Header from './_component/header/header';
 import { getPages } from '@/components/loadFiles';
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: Props) {
         <Header pages={pages} />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

@@ -1,6 +1,6 @@
-import NoticeCard from "./Card";
-import { getNotices } from "@/components/loadFiles";
-import { css } from "@/styled-system/css";
+import NoticeCard from './Card';
+import { getNotices } from '@/components/loadFiles';
+import { css } from '@/styled-system/css';
 
 export default function Notice() {
   const notices = getNotices();
@@ -12,14 +12,14 @@ export default function Notice() {
   return (
     <section
       className={css({
-        padding: "50px 0",
-        textAlign: "center",
+        padding: '50px 0',
+        textAlign: 'center',
       })}
     >
       <h2
         className={css({
-          paddingBottom: "30px",
-          fontSize: "2rem",
+          paddingBottom: '30px',
+          fontSize: '2rem',
         })}
       >
         お知らせ
@@ -27,8 +27,8 @@ export default function Notice() {
 
       <div
         className={css({
-          marginInline: "auto",
-          maxWidth: "800px",
+          marginInline: 'auto',
+          maxWidth: '800px',
         })}
       >
         {displayNotices.map((notice) => (
