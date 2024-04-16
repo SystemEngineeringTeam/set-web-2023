@@ -17,7 +17,4 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const analytics = getAnalytics(firebaseApp);
 
-console.log("firebase.ts: firebaseApp:", firebaseApp);
-console.log("firebase.ts: analytics:", analytics);
-
 export { firebaseApp, analytics };
