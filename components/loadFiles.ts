@@ -66,7 +66,9 @@ export function getEvents(): EventPage[] {
     );
 
     const overview = md.content.split('---').at(0) || '';
-    const content = md.content.split('---').slice(1).join('---');
+    const content = md.content.includes('---')
+      ? md.content.split('---').slice(1).join('---')
+      : md.content;
 
     return {
       filename,

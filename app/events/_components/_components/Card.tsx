@@ -69,7 +69,7 @@ export default function EventCard(props: Props) {
           className={mdStyle({
             style: 'no-style',
           })}
-          content={event.content}
+          content={event.overview}
         />
       </div>
     </div>
