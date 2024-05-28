@@ -5,7 +5,14 @@ export const mdStyles = [
   'a-only',
 ] as const;
 
-export const specialPath = ['/', '/posts', '/post', '/products', '/dev'];
+export const specialPath = [
+  '/',
+  '/posts',
+  '/post',
+  '/products',
+  '/dev',
+  '/events',
+];
 
 export const DEFAULT_POST_THUMBNAIL = '/img/posts/default.webp';
 export const DEFAULT_PRODUCT_THUMBNAIL = '/img/products/default.webp';

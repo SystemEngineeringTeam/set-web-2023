@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { IMAGE_REGEX } from '@/const';
-import { Page, Image, PostPage, Product, NoticePage } from '@/types';
+import { Page, Image, PostPage, Product, NoticePage, EventPage } from '@/types';
 
 export function getTopImages(): Image[] {
   const imagesDir = path.join(process.cwd(), 'public/img/top');
@@ -33,6 +33,59 @@ function parseMetaTag(
   if (value && check.test(value)) return value;
 
   return defaultValue;
+}
+
+export function getEvents(): EventPage[] {
+  const contentsDir = path.join(process.cwd(), 'public/markdown/events');
+  const filenames = fs.readdirSync(contentsDir);
+  const filteredFilenames = filenames.filter(
+    (filename) => !filename.startsWith('.'),
+  );
+
+  const pages: EventPage[] = filteredFilenames.map((filename) => {
+    const filePath = path.join(contentsDir, filename);
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const md = matter(fileContents);
+    const meta = md.data;
+
+    if (typeof meta.tags === 'string') meta.tags = meta.tags.split(', ');
+
+    const createdAt = parseMetaTag(
+      meta.tags,
+      'at',
+      meta.created_at,
+      /\d{4}-\d{2}-\d{2}/,
+    );
+    meta.created_at = new Date(createdAt);
+
+    const deadline = parseMetaTag(
+      meta.tags,
+      'deadline',
+      '3000-01-01',
+      /\d{4}-\d{2}-\d{2}/,
+    );
+
+    const overview = md.content.split('---').at(0) || '';
+    const content = md.content.includes('---')
+      ? md.content.split('---').slice(1).join('---')
+      : md.content;
+
+    return {
+      filename,
+      deadline: deadline ? new Date(deadline) : null,
+      id: md.data.number,
+      meta,
+      content,
+      overview,
+    } as EventPage;
+  });
+
+  const filteredPosts = pages.filter((page) => page.meta.title !== 'README');
+  filteredPosts.sort((a, b) =>
+    a.meta.created_at > b.meta.created_at ? -1 : 1,
+  );
+
+  return filteredPosts;
 }
 
 export function getNotices(): NoticePage[] {
