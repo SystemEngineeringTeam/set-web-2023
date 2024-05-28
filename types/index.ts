@@ -33,6 +33,14 @@ export type NoticePage = Omit<
   deadline: Date;
 };
 
+export type EventPage = Omit<
+  Page,
+  'path' | 'style' | 'widthNarrow' | 'other' | 'sort'
+> & {
+  deadline: Date;
+  overview: string;
+};
+
 export type Product = {
   title: string;
   created_at: Date;
