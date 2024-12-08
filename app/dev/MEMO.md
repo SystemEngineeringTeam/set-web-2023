@@ -1,4 +1,7 @@
 ### 2024
+そろそろ今のサイトのデザイン飽きたから作り直したい.
+誰かつくってくれないかなあ
+
 最近更新してなかったことを思い出した.
 [ペンギン検定基本問題集2025](https://penguin.ikimonoacademy.com/announcement/2454)というのがでるらしい!ぜひ買いたい
 ちなみに [ペンギン会議(PCJ)全国大会](https://penguin.ikimonoacademy.com/announcement/2339) というのもあるよ.たのしみだね
