@@ -18,6 +18,7 @@ export type Page = {
   widthNarrow: boolean;
   sort: string;
   other: boolean;
+  title: boolean;
   filename: string;
   id: number;
   meta: PageMeta;

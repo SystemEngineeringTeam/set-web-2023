@@ -7,6 +7,7 @@ import { IMAGE_REGEX } from '@/const';
 import { css } from '@/styled-system/css';
 import { mdStyle } from '@/styled-system/patterns';
 import { PostPage } from '@/types';
+import '@/styles/bootstrap/bootstrap.scss';
 
 export const generateStaticParams = () => {
   const posts = getPosts();

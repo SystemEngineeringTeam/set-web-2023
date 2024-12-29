@@ -164,11 +164,13 @@ export function getPages(): Page[] {
       `/${meta.title.toLowerCase()}`,
       /^¥.*$/,
     );
+    const title_ = parseMetaTag(meta.tags, 'title', 'true');
 
     return {
       path: path_.replace('¥', '/'),
       widthNarrow: widthNarrow === 'true',
       other: other === 'true',
+      title: title_ === 'false',
       style,
       sort,
       filename,

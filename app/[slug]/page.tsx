@@ -5,6 +5,7 @@ import { specialPath } from '@/const';
 import { css } from '@/styled-system/css';
 import { mdStyle } from '@/styled-system/patterns';
 import { Page } from '@/types';
+import '@/styles/bootstrap/bootstrap.scss';
 
 export const generateStaticParams = () => {
   const pages = getPages();
@@ -45,6 +46,7 @@ export default function Pages({ params }: Props) {
             fontWeight: 700,
             marginBottom: '1rem',
             borderBottom: '1px solid black',
+            display: page.title ? 'block' : 'none',
           })}
         >
           {page.meta.title}
