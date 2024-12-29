@@ -46,6 +46,7 @@ export default function Pages({ params }: Props) {
             fontWeight: 700,
             marginBottom: '1rem',
             borderBottom: '1px solid black',
+            display: page.title ? 'block' : 'none',
           })}
         >
           {page.meta.title}
