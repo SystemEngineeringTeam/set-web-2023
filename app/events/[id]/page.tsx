@@ -2,6 +2,7 @@ import { getEvents } from '@/components/loadFiles';
 import Md2Html from '@/components/md2html';
 import { css } from '@/styled-system/css';
 import { mdStyle } from '@/styled-system/patterns';
+import '@/styles/bootstrap/bootstrap.scss';
 
 export const generateStaticParams = () => {
   const events = getEvents();
