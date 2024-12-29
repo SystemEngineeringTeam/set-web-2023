@@ -5,6 +5,7 @@ import { specialPath } from '@/const';
 import { css } from '@/styled-system/css';
 import { mdStyle } from '@/styled-system/patterns';
 import { Page } from '@/types';
+import '@/styles/bootstrap/bootstrap.scss';
 
 export const generateStaticParams = () => {
   const pages = getPages();
