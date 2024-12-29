@@ -170,7 +170,7 @@ export function getPages(): Page[] {
       path: path_.replace('¥', '/'),
       widthNarrow: widthNarrow === 'true',
       other: other === 'true',
-      title: title_ === 'false',
+      title: title_ !== 'false',
       style,
       sort,
       filename,
