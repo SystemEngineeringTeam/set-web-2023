@@ -37,7 +37,7 @@ export default function Battery() {
   }, []);
 
   return (
-    <div>
+    <div className={css({ '@media (max-width: 750px)': { display: 'none' } })}>
       {level && (
         <>
           <span>{Math.round(level)}%</span>
