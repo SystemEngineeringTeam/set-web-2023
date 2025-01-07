@@ -15,7 +15,7 @@ export default function Clock() {
   }, []);
 
   return (
-    <span>
+    <span className={css({ '@media (max-width: 800px)': { display: 'none' } })}>
       {time && (
         <>
           <span
