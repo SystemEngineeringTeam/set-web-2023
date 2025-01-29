@@ -20,8 +20,7 @@ export default function Home() {
   return (
     <main>
       <TopSection message={mdContents[0]} images={[hero, ...others]} />
-      <Notice />
-      <ImageSection img={imagepathes[0].path} />
+      <Notice img={imagepathes[0].path} />
       <RecentPosts posts={posts} />
       {mdContents.splice(1).map((content, index) => {
         return (
